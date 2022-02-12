@@ -1,0 +1,17 @@
+.video_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  color: white;
+}
+
+.video_header > * {
+  padding: 20px;
+}
+
+.video_header > h3 {
+  font-weight: 700;
+  font-size: x-large;
+}

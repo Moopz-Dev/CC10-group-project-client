@@ -1,0 +1,26 @@
+.videoFooter_nav {
+  bottom: 0px;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  color: rgb(255, 255, 255);
+  padding-top: 10px;
+  padding-bottom: 20px;
+  border-top: 2px solid;
+  border-top-color: #525252;
+  overflow: hidden;
+  max-width: 450px;
+  z-index: 100;
+}
+.videoFooter_nav > * {
+  /* max-width: 45px; */
+  /* min-width: 45px; */
+  /* padding: 10px; */
+}
+
+.videoFooter_icon {
+  /* position: relative; */
+}

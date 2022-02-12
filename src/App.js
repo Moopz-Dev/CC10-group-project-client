@@ -1,10 +1,21 @@
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home.js";
+import ReelsPage from "./pages/reels/ReelsPage/ReelsPage";
+import Messenger from "./pages/messenger/Messenger.jsx";
+import Login from "./pages/login/Login.jsx";
+import Register from "./pages/register/Register.jsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <Home />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/reels" element={<ReelsPage />} />
+        <Route path="/mesenger" element={<Messenger />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

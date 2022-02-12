@@ -1,0 +1,163 @@
+body {
+  font-family: sans-serif;
+}
+
+.container {
+  width: 700px;
+  margin: 0px auto;
+  padding-top: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gambar {
+  padding-right: 20px;
+  width: 50%;
+}
+
+.Image {
+  width: 100%;
+}
+
+.card-wrapper {
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  border-style: solid;
+  border-color: rgb(240, 240, 240);
+  border-width: 2px;
+  text-align: center;
+  background-color: rgb(247, 247, 247);
+  padding-bottom: 30px;
+  padding-top: 10px;
+}
+
+.logo {
+  width: 200px;
+  margin-top: 30px;
+}
+
+.form {
+  margin-top: 30px;
+}
+
+.input {
+  width: 250px;
+  height: 30px;
+  border: 2px solid #f0f0f0;
+  border-radius: 5px;
+  padding: 4px;
+  margin-top: 10px;
+}
+
+.forgot-box {
+  text-align: end;
+  margin-right: 70px;
+}
+
+.loginbtn {
+  background-color: #bd6efb;
+  border: 0px solid transparent;
+  width: 260px;
+  height: 30px;
+  border-radius: 6px;
+  margin-top: 20px;
+  color: white;
+}
+
+.ortag {
+  font-size: 13px;
+}
+
+.login-facebook {
+  color: #bd6efb;
+  text-decoration: none;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom-text {
+  font-size: 13px;
+}
+
+.signup-link {
+  color: rgb(104, 200, 238);
+  text-decoration: none;
+}
+
+@media screen and (max-width: 700px) {
+  .backbtn {
+    display: flex;
+    position: absolute;
+    top: 30px;
+    left: 23px;
+  }
+  .gambar {
+    display: none;
+  }
+
+  .logo-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .container {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    width: 380px;
+    display: flex;
+    object-fit: fill;
+    border: none;
+    overflow: visible;
+  }
+  .card.top {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 100%;
+    padding-bottom: 40%;
+    border: none;
+    overflow: visible;
+  }
+
+  .card.bottom {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 100%;
+    border: none;
+    overflow: visible;
+  }
+  .card-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    border: none;
+  }
+  .container-res {
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    min-width: 380px;
+    min-height: 90vh;
+    min-width: 50vh;
+    overflow: visible;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .backbtn {
+    display: none;
+  }
+}
