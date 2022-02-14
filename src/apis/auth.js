@@ -19,3 +19,10 @@ export const registerNewUser = async (
 		confirmPassword,
 	});
 };
+
+export const login = async (usernameOrPhoneNumberOrEmail, password) => {
+	return await axios.post("auth/login", {
+		usernameOrPhoneNumberOrEmail,
+		password,
+	});
+};
