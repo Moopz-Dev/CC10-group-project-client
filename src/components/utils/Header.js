@@ -1,6 +1,5 @@
 import React from "react";
 import Box from "@mui/material/Box";
-// import CssBaseline from "@mui/material/CssBaseline";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
@@ -11,7 +10,6 @@ const Header = () => {
   return (
     <>
       <Box sx={{ pb: 7 }}>
-        {/* <CssBaseline /> */}
         <Paper
           sx={{
             position: "fixed",
@@ -24,8 +22,8 @@ const Header = () => {
           }}
           elevation={0}
         >
-          <div
-            style={{
+          <Box
+            sx={{
               marginLeft: "15px",
               alignSelf: "center",
               fontFamily: "cookie",
@@ -33,12 +31,12 @@ const Header = () => {
             }}
           >
             Instagrum
-          </div>
-          <div style={{ width: 250 }}>
+          </Box>
+          <Box sx={{ width: 250 }}>
             <BottomNavigationAction icon={<PostAddIcon />} />
             <BottomNavigationAction icon={<FavoriteBorderOutlinedIcon />} />
             <BottomNavigationAction icon={<ChatOutlinedIcon />} />
-          </div>
+          </Box>
         </Paper>
       </Box>
     </>

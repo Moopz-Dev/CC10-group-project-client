@@ -22,6 +22,7 @@ const HeaderComment = () => {
             right: 0,
             display: "flex",
             justifyContent: "space-between",
+            alignItems: 'center',
             zIndex: 1100,
           }}
           elevation={0}
@@ -33,8 +34,8 @@ const HeaderComment = () => {
           >
             <BottomNavigationAction icon={<ArrowBackIosNewIcon />} />
           </div>
-          <div style={{ marginTop: '15px' }}>
-            <Typography>Comments</Typography>
+          <div>
+            <Typography sx={{ fontWeight: '500', marginTop: '10px' }}>Comments</Typography>
           </div>
           <div></div>
         </Paper>
