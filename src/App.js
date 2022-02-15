@@ -1,9 +1,10 @@
-import Home from "./pages/Home/Home.js";
+import Home from "./pages/home/Home.js";
 import ReelsPage from "./pages/reels/ReelsPage/ReelsPage";
 import Messenger from "./pages/messenger/Messenger.jsx";
 import Login from "./pages/login/Login.jsx";
 import Register from "./pages/register/Register.jsx";
-import Comment from "./pages/Comment/Comment.js";
+import Comment from "./pages/comment/Comment.js";
+import UserProfile from "./pages/user/UserProfile.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/reels" element={<ReelsPage />} />
         <Route path="/comment" element={<Comment />} />
+        <Route path="/user" element={<UserProfile />} />
         <Route path="/mesenger" element={<Messenger />} />
       </Routes>
     </BrowserRouter>

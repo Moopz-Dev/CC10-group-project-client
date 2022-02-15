@@ -82,7 +82,7 @@ const CommentBody = () => {
         }}
       >
         <Avatar src={user1} /> &nbsp;
-        <TextField id='outlined-basic' variant='outlined' fullWidth />
+        <TextField id='outlined-basic' fullWidth />
       </Box>
     </Box>
   );

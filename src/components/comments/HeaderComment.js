@@ -2,12 +2,8 @@ import React from 'react'
 import Box from "@mui/material/Box";
 // import CssBaseline from "@mui/material/CssBaseline";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import PostAddIcon from "@mui/icons-material/PostAdd";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import ChatOutlinedIcon from "@mui/icons-material/ChatOutlined";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { Paper, Typography } from "@mui/material";
-import SendOutlined from '@mui/icons-material/SendOutlined';
 
 const HeaderComment = () => {
   return (
