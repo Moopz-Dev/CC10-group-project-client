@@ -1,7 +1,7 @@
 import axios from "../config/axios";
 
 export const facebookLogin = async user => {
-	return await axios.post("/auth/facebooklogin", user);
+	return await axios.post("/auth/facebooklogin/", user);
 };
 
 export const registerNewUser = async (
@@ -11,7 +11,7 @@ export const registerNewUser = async (
 	password,
 	confirmPassword
 ) => {
-	return await axios.post("/auth/register", {
+	return await axios.post("/auth/register/", {
 		username,
 		email,
 		phoneNumber,
@@ -21,7 +21,7 @@ export const registerNewUser = async (
 };
 
 export const login = async (usernameOrPhoneNumberOrEmail, password) => {
-	return await axios.post("auth/login", {
+	return await axios.post("auth/login/", {
 		usernameOrPhoneNumberOrEmail,
 		password,
 	});
