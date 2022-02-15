@@ -24,7 +24,9 @@ const UserHeader = () => {
           <Typography
             sx={{
               marginLeft: '15px',
-              alignSelf: 'center'
+              alignSelf: 'center',
+              fontWeight: 600,
+              fontSize: '1.2rem'
             }}
           >
             username1
