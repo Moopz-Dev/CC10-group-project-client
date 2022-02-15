@@ -29,7 +29,7 @@ const CommentBody = () => {
           </Box>
         </Box>
       </Box>
-
+      {/* Comment mock up */}
       <Box
         sx={{
           padding: '20px 10px',
