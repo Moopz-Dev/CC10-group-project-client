@@ -2,11 +2,13 @@ import React from 'react';
 import { Avatar, Button, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import user2 from '../../images/profiles/pro2.jpg';
+import MultiNavUserProfile from './MultiNavUserProfile';
+import StandardImageList from './StandardImageList';
 
 const UserBio = () => {
   return (
-    <Box sx={{ height: '210px' }}>
-      <Box sx={{ height: '100px', display: 'flex' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <Box sx={{ height: '100px', display: 'flex', justifyContent: 'center' }}>
         <Box
           sx={{
             width: '100px',
@@ -53,8 +55,10 @@ const UserBio = () => {
         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <Button variant="outlined" sx={{ width: '350px' }}>Edit Profile</Button>
         </Box>
-        
       </Box>
+
+      <MultiNavUserProfile />
+      <StandardImageList />
       {/* <Box sx={{ height: '70px' }}>3</Box> */}
     </Box>
   );
