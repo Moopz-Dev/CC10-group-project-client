@@ -26,3 +26,7 @@ export const login = async (usernameOrPhoneNumberOrEmail, password) => {
 		password,
 	});
 };
+
+export const getMe = async () => {
+	return await axios.get("/user/me");
+};
