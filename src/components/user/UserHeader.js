@@ -1,11 +1,72 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { Paper, Typography } from '@mui/material';
 import AddBoxOutlined from '@mui/icons-material/AddBoxOutlined';
 import DehazeIcon from '@mui/icons-material/Dehaze';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import GridOnOutlinedIcon from '@mui/icons-material/GridOnOutlined';
+import MusicVideoIcon from '@mui/icons-material/MusicVideo';
+import StarOutlineIcon from '@mui/icons-material/StarOutline';
 
 const UserHeader = () => {
+  const [state, setState] = useState({
+    bottom: false,
+  });
+  // const []
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
+    ) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
+  };
+
+  const list = (anchor) => (
+    <Box
+      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+      role='presentation'
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <Box
+        component='div'
+        sx={{
+          textAlign: 'center',
+          padding: '15px 0 10px 0',
+          fontSize: '1.2rem',
+          fontWeight: '500',
+        }}
+      >
+        Create
+      </Box>
+      <List>
+        {['Post', 'Reels', 'Story', 'Story Highlight'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>
+              {index === 0 && <GridOnOutlinedIcon />}
+              {index === 1 && <InboxIcon />}
+              {index === 2 && <MusicVideoIcon />}
+              {index === 3 && <StarOutlineIcon />}
+            </ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+    </Box>
+  );
+
   return (
     <>
       <Box sx={{ pb: 7 }}>
@@ -26,13 +87,29 @@ const UserHeader = () => {
               marginLeft: '15px',
               alignSelf: 'center',
               fontWeight: 600,
-              fontSize: '1.2rem'
+              fontSize: '1.2rem',
             }}
           >
             username1
           </Typography>
           <Box sx={{ width: 150, display: 'flex' }}>
-            <BottomNavigationAction icon={<AddBoxOutlined />} />
+            {['bottom'].map((anchor) => (
+              <React.Fragment key={anchor}>
+                <BottomNavigationAction
+                  icon={<AddBoxOutlined />}
+                  onClick={toggleDrawer(anchor, true)}
+                >
+                  {anchor}
+                </BottomNavigationAction>
+                <Drawer
+                  anchor={anchor}
+                  open={state[anchor]}
+                  onClose={toggleDrawer(anchor, false)}
+                >
+                  {list(anchor)}
+                </Drawer>
+              </React.Fragment>
+            ))}
             <BottomNavigationAction icon={<DehazeIcon />} />
           </Box>
         </Paper>
