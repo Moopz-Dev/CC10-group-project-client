@@ -10,6 +10,13 @@
 
 .btnFacebook {
   border: none;
-  background-color: rgb(247, 247, 247);
+  background-color: rgb(255, 255, 255);
+
   color: #bd6efb;
+}
+
+@media screen and (min-width: 700px) {
+  .btnFacebook {
+    background-color: rgb(247, 247, 247);
+  }
 }

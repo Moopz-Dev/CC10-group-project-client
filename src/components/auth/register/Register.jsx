@@ -1,13 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import "./register.css";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { registerNewUser } from "../../../apis/auth";
-
+import axios from "../../../config/axios";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import FacebookLoginButton from "../FacebookLoginButton";
 
 function Register() {
-  const [userName, setUserName] = useState("");
+  const [username, setUserName] = useState("");
 
   const [email, setEmail] = useState("");
 
@@ -15,12 +16,22 @@ function Register() {
 
   const [password, setPassword] = useState("");
 
-  const [confrimPassword, setConfrimPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-    } catch (error) {}
+      const res = await axios.post("/auth/register", {
+        username,
+        email,
+        phoneNumber,
+        password,
+        confirmPassword,
+      });
+      navigate("/login");
+    } catch (err) {}
   };
 
   return (
@@ -52,7 +63,7 @@ function Register() {
                   type="text"
                   className="input"
                   placeholder="Username"
-                  value={userName}
+                  value={username}
                   onChange={(e) => setUserName(e.target.value)}
                 />
                 <input
@@ -81,8 +92,8 @@ function Register() {
                   type="password"
                   className="input"
                   placeholder="Confrim Password"
-                  value={confrimPassword}
-                  onChange={(e) => setConfrimPassword(e.target.value)}
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                 />
 
                 <button className="loginbtn" type="submit">
@@ -91,10 +102,11 @@ function Register() {
               </div>
             </form>
             <p className="ortag">⎯⎯⎯⎯ OR ⎯⎯⎯⎯</p>
-            <a href="#" className="login-facebook">
+            {/* <a href="#" className="login-facebook">
               <FacebookIcon />
               Continue with facebook
-            </a>
+            </a> */}
+            <FacebookLoginButton />
           </div>
           <div className="card bottom">
             <p className="bottom-text">

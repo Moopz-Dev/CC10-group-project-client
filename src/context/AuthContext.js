@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import axios from "../config/axios";
 import { setToken, clearToken, getToken } from "../services/localStorage";
 
-export const AuthContext = createContext();
+const AuthContext = createContext();
 
 function AuthContextProvider({ children }) {
   const [user, setUser] = useState(null);
@@ -47,4 +47,4 @@ function AuthContextProvider({ children }) {
 
 export default AuthContextProvider;
 
-// export { AuthContext };
+export { AuthContext };

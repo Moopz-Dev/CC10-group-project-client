@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Conversation from "../../components/conversation/Conversation";
 import Header from "../../components/utils/Header";
 import Message from "../../components/message/Message";
