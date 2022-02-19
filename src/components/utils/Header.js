@@ -91,38 +91,23 @@ const Header = () => {
           }}
           elevation={0}
         >
-          <Box
-            sx={{
-              marginLeft: '15px',
-              alignSelf: 'center',
-              fontFamily: 'cookie',
-              fontSize: '2rem',
-            }}
-          >
-            Instagrum
-          </Box>
-          <CreatePostModal open={open} />
+          <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+            <Box
+              sx={{
+                marginLeft: "15px",
+                alignSelf: "center",
+                fontFamily: "cookie",
+                fontSize: "2rem",
+              }}
+            >
+              Instagrum
+            </Box>
+          </Link>
 
           <Box sx={{ width: 250 }}>
-            {['bottom'].map((anchor) => (
-              <React.Fragment key={anchor}>
-                <BottomNavigationAction
-                  icon={<PostAddIcon />}
-                  onClick={toggleDrawer(anchor, true)}
-                >
-                  {anchor}
-                </BottomNavigationAction>
-                <Drawer
-                  anchor={anchor}
-                  open={state[anchor]}
-                  onClose={toggleDrawer(anchor, false)}
-                >
-                  {list(anchor)}
-                </Drawer>
-              </React.Fragment>
-            ))}
+            <BottomNavigationAction icon={<PostAddIcon />} />
             <BottomNavigationAction icon={<FavoriteBorderOutlinedIcon />} />
-            <Link to='/mesenger'>
+            <Link to="/mesenger">
               <BottomNavigationAction icon={<ChatOutlinedIcon />} />
             </Link>
           </Box>

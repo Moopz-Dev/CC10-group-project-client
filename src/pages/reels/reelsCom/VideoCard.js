@@ -3,7 +3,7 @@ import "./VideoCard.css";
 import VideoHeader from "./VideoHeader.js";
 import VideoFooter from "./VideoFooter.js";
 import VideoSidebar from "./VideoSidebar.js";
-import VideoBottomNav from "./VideoBottomNav.js";
+// import VideoBottomNav from "./VideoBottomNav.js";
 import Navbar from "../../../components/utils/Navbar";
 
 function VideoCard() {

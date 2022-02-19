@@ -71,6 +71,8 @@ body {
 
 .ortag {
   font-size: 13px;
+  font-style: lighter;
+  color: rgb(170, 170, 170);
 }
 
 .login-facebook {
