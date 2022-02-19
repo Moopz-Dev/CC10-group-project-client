@@ -105,7 +105,22 @@ const Header = () => {
           </Link>
 
           <Box sx={{ width: 250 }}>
-            <BottomNavigationAction icon={<PostAddIcon />} />
+          {['bottom'].map((anchor) => (
+              <React.Fragment key={anchor}>
+            <BottomNavigationAction icon={<PostAddIcon />} 
+            onClick={toggleDrawer(anchor, true)}>
+            {anchor}
+            </BottomNavigationAction>
+            <Drawer
+                  anchor={anchor}
+                  open={state[anchor]}
+                  onClose={toggleDrawer(anchor, false)}
+                >
+                  {list(anchor)}
+                </Drawer>
+              </React.Fragment>
+            ))}
+
             <BottomNavigationAction icon={<FavoriteBorderOutlinedIcon />} />
             <Link to="/mesenger">
               <BottomNavigationAction icon={<ChatOutlinedIcon />} />
