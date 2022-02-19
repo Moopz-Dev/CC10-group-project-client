@@ -1,0 +1,22 @@
+.login-facebook {
+  color: #bd6efb;
+  text-decoration: none;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.btnFacebook {
+  border: none;
+  background-color: rgb(255, 255, 255);
+
+  color: #bd6efb;
+}
+
+@media screen and (min-width: 700px) {
+  .btnFacebook {
+    background-color: rgb(247, 247, 247);
+  }
+}

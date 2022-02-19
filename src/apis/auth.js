@@ -30,3 +30,7 @@ export const login = async (usernameOrPhoneNumberOrEmail, password) => {
 export const getMe = async () => {
 	return await axios.get("/user/me");
 };
+
+export const getMe = async () => {
+	return await axios.get("/user/me");
+};
