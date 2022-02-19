@@ -13,13 +13,15 @@ import UserUnkown from "./components/user/userUnknown/UserUnkown.js";
 // import Register from "./pages/Register/Register";
 // import Comment from "./pages/Comment/Comment.js";
 // import UserProfile from "./pages/user/UserProfile.js";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ModalStory from "./components/utils/ModalStory.js";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 
 function App() {
   const { user } = useContext(AuthContext);
+
+  console.log(user)
   return (
     <BrowserRouter>
       <Routes>

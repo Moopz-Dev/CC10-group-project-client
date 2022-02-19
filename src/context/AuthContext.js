@@ -16,10 +16,10 @@ function AuthContextProvider({ children }) {
     }
   }, []);
 
-  const login = async (emailOrPhoneNumber, password) => {
+  const login = async (usernameOrPhoneNumberOrEmail, password) => {
     try {
       const res = await axios.post("/auth/login", {
-        emailOrPhoneNumber,
+        usernameOrPhoneNumberOrEmail,
         password,
       });
       setToken(res.data.token);

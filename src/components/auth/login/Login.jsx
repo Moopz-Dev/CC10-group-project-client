@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import "./login.css";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import FacebookLoginButton from "../FacebookLoginButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 
 function Login() {
@@ -10,10 +10,13 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const { login } = useContext(AuthContext);
+  
+  const navigate = useNavigate();
 
   const handleSubmitLogin = (e) => {
     e.preventDefault();
     login(emailOrPhoneNumber, password);
+    navigate('/');
   };
 
   return (
