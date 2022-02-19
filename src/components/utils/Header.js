@@ -101,7 +101,7 @@ const Header = () => {
           >
             Instagrum
           </Box>
-          {/* <CreatePostModal /> */}
+          <CreatePostModal open={open} />
 
           <Box sx={{ width: 250 }}>
             {['bottom'].map((anchor) => (

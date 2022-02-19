@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '@mui/material/Card';
-import { Box, typography } from '@mui/system';
+import { Box } from '@mui/system';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -15,7 +15,6 @@ import user1 from '../../images/profiles/pro1.jpg';
 import user2 from '../../images/profiles/pro2.jpg';
 import user3 from '../../images/profiles/pro3.jpg';
 import test01 from '../../images/posts/test01.jpg';
-// import test02 from '../../images/posts/test02.jpg';
 import test03 from '../../images/posts/test03.jpg';
 import video1 from '../../images/videos/video1.mp4';
 import CarouselPostPic from './CarouselPostPic';
