@@ -2,7 +2,12 @@ import { createContext, useEffect, useState } from "react";
 import axios from "../config/axios";
 import { setToken, clearToken, getToken } from "../services/localStorage";
 
-const AuthContext = createContext();
+const AuthContext = createContext({
+  token: null,
+  userId: null,
+  login: () => {},
+  logout: () => {},
+});
 
 function AuthContextProvider({ children }) {
   const [user, setUser] = useState(null);
@@ -10,7 +15,7 @@ function AuthContextProvider({ children }) {
   useEffect(() => {
     if (getToken()) {
       axios
-        .get("/users/me")
+        .get("/user/me")
         .then((res) => setUser(res.data.user))
         .catch((err) => console.log(err));
     }

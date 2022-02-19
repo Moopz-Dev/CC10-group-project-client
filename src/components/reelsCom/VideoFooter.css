@@ -33,12 +33,13 @@
 
 .videoFooter__icon {
   position: absolute;
+  bottom: 13px;
 }
 
 .videoFooter__ticker > .ticker {
   height: fit-content;
   margin-left: 30px;
-  width: 60%;
+  width: 70%;
 }
 
 .videoFooter__ticker h1 {
@@ -52,6 +53,21 @@
   position: absolute;
   bottom: 0;
   right: 20px;
+}
+
+.lottie-box {
+  display: flex;
+  position: relative;
+  bottom: -50px;
+  right: 30px;
+  z-index: 10;
+}
+
+#lottie-controls.toolbar {
+}
+
+.lottie {
+  display: none;
 }
 
 @keyframes spinTheRecord {

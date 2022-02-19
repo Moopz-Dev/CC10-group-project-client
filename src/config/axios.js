@@ -5,13 +5,13 @@ import { getToken } from "../services/localStorage";
 axios.defaults.baseURL = API_URL;
 
 axios.interceptors.request.use(
-	config => {
-		if (getToken()) {
-			config.headers.Authorization = "Bearer " + getToken();
-		}
-		return config;
-	},
-	err => Promise.reject(err)
+  (config) => {
+    if (getToken()) {
+      config.headers.Authorization = "Bearer " + getToken();
+    }
+    return config;
+  },
+  (err) => Promise.reject(err)
 );
 
 export default axios;
