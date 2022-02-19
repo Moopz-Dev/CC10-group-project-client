@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Box from '@mui/material/Box';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { Paper, Typography } from '@mui/material';
@@ -14,14 +14,20 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import GridOnOutlinedIcon from '@mui/icons-material/GridOnOutlined';
 import MusicVideoIcon from '@mui/icons-material/MusicVideo';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
+import Settings from '@mui/icons-material/Settings';
+import Logout from '@mui/icons-material/Logout';
+import { AuthContext } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const UserHeader = () => {
-  const [state, setState] = useState({
+  const [state1, setState1] = useState({
     bottom: false,
   });
-  // const []
+  const [state2, setState2] = useState({
+    bottom: false,
+  });
 
-  const toggleDrawer = (anchor, open) => (event) => {
+  const toggleDrawer1 = (anchor1, open1) => (event) => {
     if (
       event.type === 'keydown' &&
       (event.key === 'Tab' || event.key === 'Shift')
@@ -29,15 +35,15 @@ const UserHeader = () => {
       return;
     }
 
-    setState({ ...state, [anchor]: open });
+    setState1({ ...state1, [anchor1]: open1 });
   };
 
-  const list = (anchor) => (
+  const list1 = (anchor1) => (
     <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+      sx={{ width: anchor1 === 'top' || anchor1 === 'bottom' ? 'auto' : 250 }}
       role='presentation'
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
+      onClick={toggleDrawer1(anchor1, false)}
+      onKeyDown={toggleDrawer1(anchor1, false)}
     >
       <Box
         component='div'
@@ -50,6 +56,7 @@ const UserHeader = () => {
       >
         Create
       </Box>
+      <Divider />
       <List>
         {['Post', 'Reels', 'Story', 'Story Highlight'].map((text, index) => (
           <ListItem button key={text}>
@@ -66,6 +73,51 @@ const UserHeader = () => {
       <Divider />
     </Box>
   );
+
+  const toggleDrawer2 = (anchor2, open) => (event) => {
+    if (
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
+    ) {
+      return;
+    }
+
+    setState2({ ...state2, [anchor2]: open });
+  };
+
+  const { logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleClickLogout = (text) => {
+    console.log(text);
+    if (text === 'Log out') {
+      logout()
+      navigate('/login')
+    }
+  }
+
+  const list2 = (anchor2) => (
+    <Box
+      sx={{ width: anchor2 === 'top' || anchor2 === 'bottom' ? 'auto' : 250 }}
+      role='presentation'
+      onClick={toggleDrawer2(anchor2, false)}
+      onKeyDown={toggleDrawer2(anchor2, false)}
+    >
+      <List>
+        {['Setting', 'Log out'].map((text, index) => (
+          <ListItem button key={text} onClick={() => handleClickLogout(text)}>
+            <ListItemIcon>
+              {index === 0 && <Settings />}
+              {index === 1 && <Logout />}
+            </ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+    </Box>
+  );
+
 
   return (
     <>
@@ -92,25 +144,43 @@ const UserHeader = () => {
           >
             username1
           </Typography>
+          {/* Drawer for create */}
           <Box sx={{ width: 150, display: 'flex' }}>
-            {['bottom'].map((anchor) => (
-              <React.Fragment key={anchor}>
+            {['bottom'].map((anchor1) => (
+              <React.Fragment key={anchor1}>
                 <BottomNavigationAction
                   icon={<AddBoxOutlined />}
-                  onClick={toggleDrawer(anchor, true)}
+                  onClick={toggleDrawer1(anchor1, true)}
                 >
-                  {anchor}
+                  {anchor1}
                 </BottomNavigationAction>
                 <Drawer
-                  anchor={anchor}
-                  open={state[anchor]}
-                  onClose={toggleDrawer(anchor, false)}
+                  anchor={anchor1}
+                  open={state1[anchor1]}
+                  onClose={toggleDrawer1(anchor1, false)}
                 >
-                  {list(anchor)}
+                  {list1(anchor1)}
                 </Drawer>
               </React.Fragment>
             ))}
-            <BottomNavigationAction icon={<DehazeIcon />} />
+            {/* Drawer for log out */}
+            {['bottom'].map((anchor2) => (
+              <React.Fragment key={anchor2}>
+                <BottomNavigationAction
+                  icon={<DehazeIcon />}
+                  onClick={toggleDrawer2(anchor2, true)}
+                >
+                  {anchor2}
+                </BottomNavigationAction>
+                <Drawer
+                  anchor={anchor2}
+                  open={state2[anchor2]}
+                  onClose={toggleDrawer2(anchor2, false)}
+                >
+                  {list2(anchor2)}
+                </Drawer>
+              </React.Fragment>
+            ))}
           </Box>
         </Paper>
       </Box>
