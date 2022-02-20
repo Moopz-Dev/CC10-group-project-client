@@ -5,12 +5,12 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { Paper, Typography } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 
-const HeaderComment = () => {
+const UserUnknownHeader = () => {
   const navigate = useNavigate();
 
   return (
     <>
-    <Box sx={{ pb: 7, borderBottom: '1px solid lightgray' }}>
+        <Box sx={{ pb: 7 }} >
         <Paper
           sx={{
             position: "fixed",
@@ -32,7 +32,7 @@ const HeaderComment = () => {
             <BottomNavigationAction icon={<ArrowBackIosNewIcon />} onClick={e => navigate('/')} />
           </div>
           <div>
-            <Typography sx={{ fontWeight: '500', marginTop: '10px' }}>Comments</Typography>
+            <Typography sx={{ fontWeight: '500', marginTop: '10px' }}>username</Typography>
           </div>
           <div></div>
         </Paper>
@@ -41,4 +41,4 @@ const HeaderComment = () => {
   )
 }
 
-export default HeaderComment
+export default UserUnknownHeader

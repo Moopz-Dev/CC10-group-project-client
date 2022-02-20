@@ -2,7 +2,6 @@ import React from 'react';
 import { Avatar, Button, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import user2 from '../../images/profiles/pro2.jpg';
-import MultiNavUserProfile from './MultiNavUserProfile';
 import StandardImageList from './StandardImageList';
 
 const UserBio = () => {
@@ -57,9 +56,7 @@ const UserBio = () => {
         </Box>
       </Box>
 
-      <MultiNavUserProfile />
       <StandardImageList />
-      {/* <Box sx={{ height: '70px' }}>3</Box> */}
     </Box>
   );
 };

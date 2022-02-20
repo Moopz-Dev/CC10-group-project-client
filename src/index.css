@@ -8,6 +8,15 @@
   --text-grey-color: #6e6e6e;
 }
 
+.MuiContainer-root {
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+  border: 1px solid rgb(206, 206, 206);
+}
+
+.MuiPaper-root {
+  border-bottom: 1px solid rgb(206, 206, 206);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
