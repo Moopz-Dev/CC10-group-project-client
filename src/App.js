@@ -13,7 +13,7 @@ import UserUnkown from "./components/user/userUnknown/UserUnkown.js";
 // import Register from "./pages/Register/Register";
 // import Comment from "./pages/Comment/Comment.js";
 // import UserProfile from "./pages/user/UserProfile.js";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ModalStory from "./components/utils/ModalStory.js";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
@@ -22,6 +22,7 @@ import Loading from "./pages/Loading/Loading.jsx";
 
 function App() {
 	const { user } = useContext(AuthContext);
+
 	return (
 		<BrowserRouter>
 			{getToken() ? (
@@ -36,14 +37,15 @@ function App() {
 						<Route path="/test" element={<ModalStory />} />
 						<Route path="/story" element={<Stories />} />
 						<Route path="/userunknown" element={<UserUnkown />} />
-						<Route path="*" element={<Home />} />
+						<Route path="/" element={<Home />} />
+						<Route path="*" element={<Navigate to="/" />} />
 					</Routes>
 				)
 			) : (
 				<Routes>
-					<Route path="/" element={user ? <Home /> : <Login />} />
 					<Route path="/login" element={user ? <Home /> : <Login />} />
 					<Route path="/register" element={<Register />} />
+					<Route path="*" element={<Navigate to="/login" />} />
 				</Routes>
 			)}
 		</BrowserRouter>
