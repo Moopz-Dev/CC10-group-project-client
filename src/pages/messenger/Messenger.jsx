@@ -1,11 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Conversation from "../../components/conversation/Conversation";
 import Header from "../../components/utils/Header";
 import Message from "../../components/message/Message";
 import "./messenger.css";
 import ChatOnilne from "../../components/chatOnline/ChatOnilne";
+import { AuthContext } from "../../context/AuthContext";
 
 function Messenger() {
+  // const { user } = useContext(AuthContext);
+  // const [user, setUser] = useState(null);
   return (
     <>
       <Header />
@@ -25,11 +28,7 @@ function Messenger() {
               <Message own={true} />
               <Message />
               <Message />
-              <Message />
-              <Message />
-              <Message />
-              <Message />
-              <Message />
+              <Message own={true} />
               <Message />
             </div>
             <div className="chatBoxBottom">

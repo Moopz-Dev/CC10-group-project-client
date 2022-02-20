@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { getMe } from "../apis/auth";
 import axios from "../config/axios";
 import { setToken, clearToken, getToken } from "../services/localStorage";
 
@@ -14,17 +15,16 @@ function AuthContextProvider({ children }) {
 
   useEffect(() => {
     if (getToken()) {
-      axios
-        .get("/user/me")
+      getMe()
         .then((res) => setUser(res.data.user))
         .catch((err) => console.log(err));
     }
   }, []);
 
-  const login = async (emailOrPhoneNumber, password) => {
+  const login = async (usernameOrPhoneNumberOrEmail, password) => {
     try {
       const res = await axios.post("/auth/login", {
-        emailOrPhoneNumber,
+        usernameOrPhoneNumberOrEmail,
         password,
       });
       setToken(res.data.token);
