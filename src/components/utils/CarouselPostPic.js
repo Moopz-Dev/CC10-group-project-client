@@ -2,22 +2,15 @@ import React from "react";
 import { CardMedia } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 
-const CarouselPostPic = () => {
-  const items = [
-    {
-      url: "https://picsum.photos/id/237/200/300",
-    },
-    {
-      url: "https://picsum.photos/id/238/200/300",
-    },
-  ];
+const CarouselPostPic = ({ PostMedia }) => {
+  // console.log(PostMedia)
   return (
-    <Carousel>
-      {items.map((item, i) => (
+    <Carousel autoPlay={false} animation="slide" sx={{ color: '#be6efb86' }}>
+      {PostMedia.map((item, i) => (
           <CardMedia
-            component='img'
-            image={item.url}
-            alt={item.url}
+            component={item.type}
+            image={item.media}
+            alt=''
             height='400'
             width='350'
           />
