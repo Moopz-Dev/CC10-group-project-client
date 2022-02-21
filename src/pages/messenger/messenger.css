@@ -1,3 +1,11 @@
+.Arrow-box {
+  display: flex;
+  padding-top: 20px;
+  position: relative;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+
 .messenger {
   height: calc(100vh - 90px);
   display: flex;
@@ -77,6 +85,12 @@
     display: none;
   }
   .chatOnline {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .Arrow-box {
     display: none;
   }
 }
