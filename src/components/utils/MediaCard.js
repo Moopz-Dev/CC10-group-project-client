@@ -25,8 +25,7 @@ const MediaCard = () => {
       try {
         const res = await getAllPosts();
         const result = res.data;
-        console.log(result);
-
+        // console.log(result);
         setAllPost(result);
       } catch (err) {
         console.log(err);

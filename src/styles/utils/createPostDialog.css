@@ -1,0 +1,9 @@
+.container-imagePicker {
+  width: max-content;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+#input-imagePicker {
+  display: none;
+}

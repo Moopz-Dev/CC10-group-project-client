@@ -15,13 +15,13 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import GridOnOutlinedIcon from '@mui/icons-material/GridOnOutlined';
 import MusicVideoIcon from '@mui/icons-material/MusicVideo';
-import CreatePostModal from './CreatePostModal';
+import CreatePostDialog from './CreatePostDialog';
 
 const Header = () => {
   const [state, setState] = useState({
     bottom: false,
   });
-  const [open, setOpen] = useState(false);
+  const [openDialog, setOpenDialog] = useState(false);
 
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -35,11 +35,15 @@ const Header = () => {
     setState({ ...state, [anchor]: open });
   };
 
-  const handleClick = (text) => {
+  const handleClickDialog = (text) => {
     console.log(text)
     if (text === 'Post') {
-      setOpen(true);
+      handleCreatePostDialog();
     }
+  }
+
+  const handleCreatePostDialog = () => {
+    setOpenDialog(!openDialog)
   }
 
   const list = (anchor) => (
@@ -62,7 +66,7 @@ const Header = () => {
       </Box>
       <List>
         {['Post', 'Reels', 'Story'].map((text, index) => (
-          <ListItem button key={text} onClick={() => handleClick(text)}>
+          <ListItem button key={text} onClick={() => handleClickDialog(text)}>
             <ListItemIcon on>
               {index === 0 && <GridOnOutlinedIcon />}
               {index === 1 && <InboxIcon />}
@@ -78,6 +82,7 @@ const Header = () => {
 
   return (
     <>
+    <CreatePostDialog handleCreatePostDialog={handleCreatePostDialog} openDialog={openDialog}   />
       <Box sx={{ pb: 7 }}>
         <Paper
           sx={{
