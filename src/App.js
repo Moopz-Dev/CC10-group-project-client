@@ -18,7 +18,7 @@ import SearchFriend from "./pages/search/SearchFriend.js";
 import Activity from "./pages/activity/Activity.js";
 
 function App() {
-	const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   return (
     <BrowserRouter>
