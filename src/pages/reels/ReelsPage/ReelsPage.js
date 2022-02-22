@@ -1,12 +1,48 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import VideoCard from "../../../components/reelsCom/VideoCard";
 import "./ReelPage.css";
+import { getAllReels, getUserReels } from "../../../apis/reel";
 
 function ReelsPage() {
+  const [reels, setReels] = useState([]);
+
+  useEffect(() => {
+    const fetchReels = async () => {
+      try {
+        const res = await getAllReels();
+        const result = res.data;
+
+        setReels(result);
+        console.log(result);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchReels();
+  }, []);
+
   return (
     <div className="reels">
       <div className="reels_videos">
-        <VideoCard
+        {reels.map(
+          ({ message, media, song, User, ReelLikes, Reelcomments }) => {
+            return (
+              <>
+                <VideoCard
+                  avatarSrc={User.profileImg}
+                  url={media}
+                  description={message}
+                  song={song}
+                  channel={User.username}
+                  likes={ReelLikes}
+                  messages={Reelcomments}
+                  shares={null}
+                />
+              </>
+            );
+          }
+        )}
+        {/* <VideoCard
           avatarSrc="https://res.cloudinary.com/dylx9cg6q/image/upload/v1643270254/cld-sample.jpg"
           url="https://res.cloudinary.com/dylx9cg6q/video/upload/v1645259643/videos/cat_jbece4.mp4"
           channel="@late_mocha"
@@ -15,8 +51,8 @@ function ReelsPage() {
           likes={3424}
           messages={234}
           shares={2561}
-        />
-        <VideoCard
+        /> */}
+        {/* <VideoCard
           avatarSrc="https://res.cloudinary.com/dylx9cg6q/image/upload/v1645264394/jae-park-7GX5aICb5i4-unsplash_zmkq9f.jpg"
           url="https://res.cloudinary.com/dylx9cg6q/video/upload/v1645259643/videos/catHeadche_m3d9je.mp4"
           channel="@late_mocha"
@@ -55,7 +91,7 @@ function ReelsPage() {
           likes={5534}
           messages={113}
           shares={5345}
-        />
+        /> */}
       </div>
     </div>
   );

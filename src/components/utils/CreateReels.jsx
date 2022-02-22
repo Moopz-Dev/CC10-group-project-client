@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./CreateReels.css";
 import { Box } from "@mui/system";
 import { Player } from "video-react";
@@ -6,43 +7,42 @@ import "../../../node_modules/video-react/dist/video-react.css";
 import axios from "axios";
 
 function CreateReels() {
-  const [videUrl, setVideoUrl] = useState("");
+  const [media, setMedia] = useState("");
   const [message, setMessage] = useState("");
   const [song, setSong] = useState("");
 
-  const PostReels = (e) => {
+  const navigate = useNavigate();
+
+  const handlePostReels = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-
-    formData.append("message", message);
-
-    console.log(formData);
-    axios.post("/posts/", formData).then((res) => console.log(res));
+    try {
+      const res = await axios.post("/reels", {
+        media,
+        message,
+        song,
+      });
+      navigate("/");
+    } catch (err) {}
   };
 
   return (
     <div className="containers-res">
       <div className="containers">
         <div className="cards-wrapper">
-          <div className="videos_box">
-            <div className="cards top">
-              {/* <Player
-                playsInline
-                src="https://res.cloudinary.com/dylx9cg6q/video/upload/v1645259658/videos/maehongsorn_xies77.mp4"
-                fluid={false}
-                width={350}
-                height={200}
-              ></Player> */}
-            </div>
+          <div className="top-text">
+            <h1>Upload your Reels</h1>
           </div>
+          <div className="videos_box"></div>
           <div className="cards bottom">
-            <form>
+            <form onSubmit={handlePostReels}>
               <div className="form">
                 <input
                   type="text"
                   className="inputs"
                   placeholder="Video Url"
                   required
+                  value={media}
+                  onChange={(e) => setMedia(e.target.value)}
                 />
                 <br></br>
                 <input
@@ -51,6 +51,8 @@ function CreateReels() {
                   placeholder="description"
                   required
                   autoComplete="on"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                 />
                 <br></br>
                 <input
@@ -59,9 +61,13 @@ function CreateReels() {
                   placeholder="Song name"
                   required
                   autoComplete="on"
+                  value={song}
+                  onChange={(e) => setSong(e.target.value)}
                 />
                 <br></br>
-                <button className="postbtn">Post</button>
+                <button className="postbtn" type="submit">
+                  Post
+                </button>
                 <button className="postbtn discard">Discard</button>
               </div>
             </form>

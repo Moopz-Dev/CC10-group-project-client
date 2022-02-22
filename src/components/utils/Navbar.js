@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
@@ -10,10 +10,15 @@ import Paper from '@mui/material/Paper';
 import { Link } from 'react-router-dom';
 import { Avatar } from '@mui/material';
 import user1 from '../../images/profiles/pro1.jpg';
+import { AuthContext } from '../../context/AuthContext';
 
 export const Navbar = () => {
   const [value, setValue] = useState(0);
   const ref = useRef(null);
+
+  const { user } = useContext(AuthContext);
+
+  console.log(user)
 
   return (
     <>

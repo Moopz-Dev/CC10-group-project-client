@@ -8,6 +8,7 @@ import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import io from "socket.io-client";
+import { getToken } from "../../services/localStorage";
 
 const socket = io("http://localhost:8080");
 
@@ -51,7 +52,7 @@ function Messenger({ username, chats, own }) {
             <div className="chatBoxTop">
               {chat.map((payload, index) => {
                 return (
-                  <p className={user ? "messageText own" : "messageText"}>
+                  <p className={getToken ? "messageText own" : "messageText"}>
                     {payload.name} : {payload.message}
                   </p>
                 );
