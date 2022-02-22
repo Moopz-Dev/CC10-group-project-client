@@ -1,4 +1,4 @@
-const createdAt = "2022-02-20T12:17:48.000Z"
+// const createdAt = "2022-s02-20T12:17:48.000Z"
 
 export function timeSince(date) {
 
