@@ -15,6 +15,7 @@ import { getToken } from "./services/localStorage.js";
 import Loading from "./pages/Loading/Loading.jsx";
 import PostReels from "./pages/postReels/PostReels.js";
 import SearchFriend from "./pages/search/SearchFriend.js";
+import Activity from "./pages/activity/Activity.js";
 
 function App() {
 	const { user } = useContext(AuthContext);
@@ -35,6 +36,7 @@ function App() {
             <Route path="/story" element={<Stories />} />
             <Route path="/postreels" element={<PostReels />} />
             <Route path="/userunknown" element={<UserUnkown />} />
+            <Route path="/activities" element={<Activity />} />
             <Route path="/" element={<Home />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
