@@ -17,7 +17,7 @@ const MenuTooltip = ({ handleCloseMenu, anchorEl, open }) => {
         }}
       >
         <MenuItem onClick={handleCloseMenu}><EditIcon /> Edit</MenuItem>
-        <MenuItem onClick={handleCloseMenu}><DeleteOutlineIcon /> Delete</MenuItem>
+        <MenuItem onClick={handleCloseMenu} sx={{ color: 'red' }}><DeleteOutlineIcon sx={{ color: 'red' }} /> Delete</MenuItem>
       </Menu>
     </div>
   );

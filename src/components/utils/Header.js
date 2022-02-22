@@ -17,6 +17,8 @@ import GridOnOutlinedIcon from '@mui/icons-material/GridOnOutlined';
 import MusicVideoIcon from '@mui/icons-material/MusicVideo';
 import CreatePostDialog from './CreatePostDialog';
 import CreateReels from './CreateReels';
+import CreatReelDialog from '../reelsCom/CreatReelDialog';
+import CreateStoryDialog from '../stories/CreateStoryDialog';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -25,6 +27,8 @@ const Header = () => {
     bottom: false,
   });
   const [openDialog, setOpenDialog] = useState(false);
+  const [openReelDialog, setOpenReelDialog] = useState(false);
+  const [openStoryDialog, setOpenStoryDialog] = useState(false);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -42,12 +46,21 @@ const Header = () => {
     if (text === 'Post') {
       handleCreatePostDialog();
     } else if (text === 'Reels') {
-      navigate('/postreels');
+      handleCreateReelDialog();
+      // navigate('/postreels');
+    } else if (text === 'Story') {
+      handleCreateStoryDialog();
     }
   };
 
   const handleCreatePostDialog = () => {
     setOpenDialog(!openDialog);
+  };
+  const handleCreateReelDialog = () => {
+    setOpenReelDialog(!openReelDialog);
+  };
+  const handleCreateStoryDialog = () => {
+    setOpenStoryDialog(!openStoryDialog);
   };
 
   const list = (anchor) => (
@@ -89,6 +102,14 @@ const Header = () => {
       <CreatePostDialog
         handleCreatePostDialog={handleCreatePostDialog}
         openDialog={openDialog}
+      />
+      <CreatReelDialog
+        handleCreateReelDialog={handleCreateReelDialog}
+        openReelDialog={openReelDialog}
+      />
+      <CreateStoryDialog
+        handleCreateStoryDialog={handleCreateStoryDialog}
+        openStoryDialog={openStoryDialog}
       />
       <Box sx={{ pb: 7 }}>
         <Paper

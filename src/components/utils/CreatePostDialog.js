@@ -47,10 +47,11 @@ const CreatePostDialog = ({ handleCreatePostDialog, openDialog }) => {
     <>
       <Container maxWidth='sm'>
         <Button variant='outlined' onClick={handleCreatePostDialog}>
-          Open full-screen dialog
+          {/* Open full-screen dialog */}
         </Button>
         <Dialog
           fullScreen
+          maxWidth='sm'
           open={openDialog}
           onClose={handleCreatePostDialog}
           TransitionComponent={Transition}
@@ -85,7 +86,6 @@ const CreatePostDialog = ({ handleCreatePostDialog, openDialog }) => {
           <Box
             sx={{
               outline: '2px dashed red',
-              width: '100vw',
               height: '350px',
               display: 'flex',
               justifyContent: 'center',

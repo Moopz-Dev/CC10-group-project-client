@@ -18,6 +18,9 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import CreatePostDialog from '../utils/CreatePostDialog';
+import CreatReelDialog from '../reelsCom/CreatReelDialog';
+import CreateStoryDialog from '../stories/CreateStoryDialog';
 
 const UserHeader = () => {
   const [state1, setState1] = useState({
@@ -26,6 +29,10 @@ const UserHeader = () => {
   const [state2, setState2] = useState({
     bottom: false,
   });
+
+  const [openDialog, setOpenDialog] = useState(false);
+  const [openReelDialog, setOpenReelDialog] = useState(false);
+  const [openStoryDialog, setOpenStoryDialog] = useState(false);
 
   const toggleDrawer1 = (anchor1, open1) => (event) => {
     if (
@@ -36,6 +43,16 @@ const UserHeader = () => {
     }
 
     setState1({ ...state1, [anchor1]: open1 });
+  };
+
+  const handleCreatePostDialog = () => {
+    setOpenDialog(!openDialog);
+  };
+  const handleCreateReelDialog = () => {
+    setOpenReelDialog(!openReelDialog);
+  };
+  const handleCreateStoryDialog = () => {
+    setOpenStoryDialog(!openStoryDialog);
   };
 
   const list1 = (anchor1) => (
@@ -59,7 +76,7 @@ const UserHeader = () => {
       <Divider />
       <List>
         {['Post', 'Reels', 'Story', 'Story Highlight'].map((text, index) => (
-          <ListItem button key={text}>
+          <ListItem button key={text} onClick={() => handleClickDialog(text)}>
             <ListItemIcon>
               {index === 0 && <GridOnOutlinedIcon />}
               {index === 1 && <InboxIcon />}
@@ -118,9 +135,35 @@ const UserHeader = () => {
     </Box>
   );
 
+  const handleClickDialog = (text) => {
+    console.log(text);
+    if (text === 'Post') {
+      handleCreatePostDialog();
+    } else if (text === 'Reels') {
+      handleCreateReelDialog();
+      // navigate('/postreels');
+    } else if (text === 'Story') {
+      handleCreateStoryDialog();
+    }
+  };
+
+  
+
 
   return (
     <>
+    <CreatePostDialog
+        handleCreatePostDialog={handleCreatePostDialog}
+        openDialog={openDialog}
+      />
+      <CreatReelDialog
+        handleCreateReelDialog={handleCreateReelDialog}
+        openReelDialog={openReelDialog}
+      />
+      <CreateStoryDialog
+        handleCreateStoryDialog={handleCreateStoryDialog}
+        openStoryDialog={openStoryDialog}
+      />
       <Box sx={{ pb: 7 }}>
         <Paper
           sx={{
