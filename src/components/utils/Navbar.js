@@ -4,11 +4,12 @@ import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
-import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import MovieCreationIcon from '@mui/icons-material/MovieCreation';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+// import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Paper from '@mui/material/Paper';
 import { Link } from 'react-router-dom';
+import { Avatar } from '@mui/material';
+import user1 from '../../images/profiles/pro1.jpg';
 
 export const Navbar = () => {
   const [value, setValue] = useState(0);
@@ -31,13 +32,16 @@ export const Navbar = () => {
             <Link to='/'>
               <BottomNavigationAction icon={<HomeIcon />} />
             </Link>
-            <BottomNavigationAction icon={<SearchIcon />} />
+            <Link to='/searchfriend'>
+              <BottomNavigationAction icon={<SearchIcon />} />
+            </Link>
             <Link to='/reels'>
               <BottomNavigationAction icon={<MovieCreationIcon />} />
             </Link>
-            <BottomNavigationAction icon={<ShoppingBagIcon />} />
             <Link to='/user'>
-              <BottomNavigationAction icon={<AccountCircleIcon />} />
+              <Box>
+                <Avatar sx={{ width: 24, height: 24, marginTop: '15px', marginLeft: '15px' }}  src={user1}/>
+              </Box>
             </Link>
           </BottomNavigation>
         </Paper>
