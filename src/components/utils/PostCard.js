@@ -46,8 +46,6 @@ const PostCard = ({ item }) => {
     }
   };
 
-  console.log(item.media);
-
   return (
     <>
       <Card sx={{ marginBottom: '5px' }} elevation={1}>

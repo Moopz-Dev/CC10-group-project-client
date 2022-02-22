@@ -17,7 +17,7 @@ import PostReels from "./pages/postReels/PostReels.js";
 import SearchFriend from "./pages/search/SearchFriend.js";
 
 function App() {
-  const { user } = useContext(AuthContext);
+	const { user } = useContext(AuthContext);
 
   return (
     <BrowserRouter>

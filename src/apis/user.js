@@ -1,26 +1,30 @@
-import axios from '../config/axios';
+import axios from "../config/axios";
 
-export const searchUser = async (searchQuery) => {
-    return await axios.get('/users/search/' + searchQuery);
+export const searchUser = async searchQuery => {
+	return await axios.get("/users/search/" + searchQuery);
 };
 
-export const getUserProfile = async (id) => {
-    return await axios.get('/users/' + id);
+export const getUserProfile = async id => {
+	return await axios.get("/users/" + id);
 };
 
 export const updateProfile = async (
-    id,
-    name,
-    bio,
-    username,
-    email,
-    phoneNumber
+	id,
+	name,
+	bio,
+	username,
+	email,
+	phoneNumber
 ) => {
-    return await axios.patch('users/' + id, {
-        name,
-        bio,
-        username,
-        email,
-        phoneNumber,
-    });
+	return await axios.patch("users/" + id, {
+		name,
+		bio,
+		username,
+		email,
+		phoneNumber,
+	});
+};
+
+export const getAllUsers = async () => {
+	return await axios.get("/users/all/");
 };
