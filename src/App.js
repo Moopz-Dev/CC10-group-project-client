@@ -14,6 +14,7 @@ import { AuthContext } from "./context/AuthContext";
 import { getToken } from "./services/localStorage.js";
 import Loading from "./pages/Loading/Loading.jsx";
 import PostReels from "./pages/PostReels/PostReels.js";
+import SearchFriend from "./pages/search/SearchFriend.js";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -27,6 +28,7 @@ function App() {
           <Routes>
             <Route path="/reels" element={<ReelsPage />} />
             <Route path="/comment" element={<Comment />} />
+            <Route path="/searchfriend" element={<SearchFriend />} />
             <Route path="/user" element={<UserProfile />} />
             <Route path="/mesenger" element={<Messenger />} />
             <Route path="/test" element={<ModalStory />} />

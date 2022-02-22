@@ -5,7 +5,7 @@ import PostAddIcon from "@mui/icons-material/PostAdd";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ChatOutlinedIcon from "@mui/icons-material/ChatOutlined";
 import { Paper } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
@@ -15,13 +15,15 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import GridOnOutlinedIcon from "@mui/icons-material/GridOnOutlined";
 import MusicVideoIcon from "@mui/icons-material/MusicVideo";
-import CreatePostModal from "./CreatePostModal";
+import CreatePostDialog from "./CreatePostDialog";
+import CreateReels from "./CreateReels";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [state, setState] = useState({
     bottom: false,
   });
-  const [open, setOpen] = useState(false);
+  const [openDialog, setOpenDialog] = useState(false);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -34,11 +36,17 @@ const Header = () => {
     setState({ ...state, [anchor]: open });
   };
 
-  const handleClick = (text) => {
+  const handleClickDialog = (text) => {
     console.log(text);
     if (text === "Post") {
-      setOpen(true);
+      handleCreatePostDialog();
+    } else if (text === "Reels") {
+      navigate("/postreels");
     }
+  };
+
+  const handleCreatePostDialog = () => {
+    setOpenDialog(!openDialog);
   };
 
   const list = (anchor) => (
@@ -61,10 +69,10 @@ const Header = () => {
       </Box>
       <List>
         {["Post", "Reels", "Story"].map((text, index) => (
-          <ListItem button key={text} onClick={() => handleClick(text)}>
+          <ListItem button key={text} onClick={() => handleClickDialog(text)}>
             <ListItemIcon on>
               {index === 0 && <GridOnOutlinedIcon />}
-              <Link to="/postreels">{index === 1 && <InboxIcon />}</Link>
+              {index === 1 && <InboxIcon />}
               {index === 2 && <MusicVideoIcon />}
             </ListItemIcon>
             <ListItemText primary={text} />
@@ -77,6 +85,10 @@ const Header = () => {
 
   return (
     <>
+      <CreatePostDialog
+        handleCreatePostDialog={handleCreatePostDialog}
+        openDialog={openDialog}
+      />
       <Box sx={{ pb: 7 }}>
         <Paper
           sx={{

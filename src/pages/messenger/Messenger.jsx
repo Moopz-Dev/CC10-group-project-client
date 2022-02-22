@@ -7,23 +7,39 @@ import ChatOnilne from "../../components/chatOnline/ChatOnilne";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import io from "socket.io-client";
 
-function Messenger({ username }) {
+const socket = io("http://localhost:8080");
+
+function Messenger({ username, chats, own }) {
   const { user } = useContext(AuthContext);
   const [conversation, setConversation] = useState([]);
   // const [user, setUser] = useState(null);
   const name = user.username;
 
+  const [chat, setChat] = useState([]);
+
   useEffect(() => {
-    const getConversations = axios.get("/conversation");
+    socket.on("message", (payload) => {
+      setChat([...chat, payload]);
+    });
   });
+
+  const [message, setMessage] = useState("");
+  const sendMessage = (e) => {
+    e.preventDefault();
+    console.log(message);
+    socket.emit("message", { name, message });
+    setMessage("");
+  };
   return (
     <>
       <Header />
-      <div className="Arrow-box">
-        <ArrowBackIosNewIcon />
-      </div>
+
       <div className="messenger">
+        <div className="Arrow-box">
+          <ArrowBackIosNewIcon />
+        </div>
         <div className="chatMenu">
           <div className="chatMenuWrapper">
             <input placeholder="Search for friends" className="chatMenuInput" />
@@ -31,23 +47,38 @@ function Messenger({ username }) {
           </div>
         </div>
         <div className="chatBox">
-          <d iv className="chatBoxWrapper">
+          <div className="chatBoxWrapper">
             <div className="chatBoxTop">
+              {chat.map((payload, index) => {
+                return (
+                  <p className={user ? "messageText own" : "messageText"}>
+                    {payload.name} : {payload.message}
+                  </p>
+                );
+              })}
+
+              {/* <Message own={true} />
               <Message />
               <Message own={true} />
-              <Message />
-              <Message />
-              <Message own={true} />
-              <Message />
+              <Message /> */}
             </div>
             <div className="chatBoxBottom">
-              <textarea
-                className="chatMessageInput"
-                placeholder="Message..."
-              ></textarea>
-              <button className="chatSummitButton">Send</button>
+              <form className="message_from" onSubmit={sendMessage}>
+                <input
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  type="text"
+                  name="message"
+                  className="chatMessageInput"
+                  placeholder="Message..."
+                  required
+                ></input>
+                <button type="submit" className="chatSummitButton">
+                  Send
+                </button>
+              </form>
             </div>
-          </d>
+          </div>
         </div>
         <div className="chatOnline">
           <div className="chatOnlineWrapper">
