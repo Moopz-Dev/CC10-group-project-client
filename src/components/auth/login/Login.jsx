@@ -1,22 +1,25 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./login.css";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import FacebookLoginButton from "../FacebookLoginButton";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
+import { setToken, clearToken, getToken } from "../../../services/localStorage";
+import axios from "../../../config/axios";
 
 function Login() {
   const [emailOrPhoneNumber, setEmailOrPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
+  // const [user, setUser] = useState();
 
   const { login } = useContext(AuthContext);
-  
+
   const navigate = useNavigate();
 
   const handleSubmitLogin = (e) => {
     e.preventDefault();
     login(emailOrPhoneNumber, password);
-    navigate('/');
+    navigate("/");
   };
 
   return (

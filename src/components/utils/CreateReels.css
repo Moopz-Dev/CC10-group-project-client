@@ -1,0 +1,176 @@
+body {
+  font-family: sans-serif;
+  overflow: visible;
+  margin-top: 0;
+  padding-top: 0;
+  background-color: #ffffff;
+}
+/* ::-webkit-scrollbar {
+  display: none;
+} */
+
+.cards.top {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 0;
+  border: none;
+  background-color: rgb(255, 255, 255);
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.videos_box {
+  background-color: rgb(255, 255, 255);
+  padding-top: 0;
+  margin-top: 0;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.containers-res {
+  background-color: rgb(255, 255, 255);
+  margin-top: 0;
+  padding-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  min-width: 380px;
+  min-height: 40vh;
+  min-width: 50vh;
+  overflow: visible;
+  object-fit: fill;
+}
+.containers {
+  background-color: rgb(255, 255, 255);
+  width: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  width: 380px;
+  display: flex;
+  object-fit: fill;
+  border: none;
+  overflow: visible;
+}
+
+.cards-wrapper {
+  padding-top: 0;
+  width: 70%;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards {
+  border-style: dashed;
+  border-color: rgb(255, 255, 255);
+  border-width: 2px;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  padding-top: 10px;
+  border-radius: 10px;
+}
+
+.cards.bottom {
+  padding-top: 0;
+  margin-top: 0;
+  background-color: rgb(255, 255, 255);
+  border-style: dashed;
+}
+.inputs {
+  width: 250px;
+  /* height: 10px; */
+  border: 2px solid #f0f0f0;
+  border-radius: 5px;
+  padding: 4px;
+  margin-top: 10px;
+}
+
+.postbtn {
+  margin-top: 20px;
+  /* background-color: #bd6efb; */
+  background-color: #ff2d2d;
+  border: 0px solid transparent;
+  width: 100px;
+  height: 30px;
+  border-radius: 2px;
+  color: white;
+  margin-right: 20px;
+}
+
+.discard {
+  background-color: #f0f0f0;
+  color: black;
+}
+
+@media screen and (max-width: 700px) {
+  .backbtn {
+    display: flex;
+    position: absolute;
+    top: 30px;
+    left: 23px;
+  }
+  .gambar {
+    display: none;
+  }
+
+  .containers {
+    width: 100%;
+    height: 100%;
+    width: 400px;
+    display: flex;
+    object-fit: fill;
+    border: none;
+    overflow: visible;
+  }
+  .cards.top {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 100%;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border: none;
+    overflow: visible;
+  }
+
+  .cards.bottom {
+    padding-top: 0;
+    margin-bottom: 0;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 100%;
+    border: none;
+    overflow: visible;
+  }
+  .cards-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    border: none;
+  }
+  .containers-res {
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    min-width: 380px;
+    min-height: 40vh;
+    min-width: 50vh;
+    overflow: visible;
+  }
+}

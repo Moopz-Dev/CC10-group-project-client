@@ -8,20 +8,20 @@ import { getUserPosts } from "../../apis/post";
 import { AuthContext } from "../../context/AuthContext";
 
 const Home = () => {
-	const { user } = useContext(AuthContext);
-	useEffect(() => {
-		getUserPosts(user.id);
-	});
-	return (
-		<>
-			<Container maxWidth="xs">
-				<Header />
-				<SliderStory />
-				<MediaCard />
-				<Navbar />
-			</Container>
-		</>
-	);
+  const { user } = useContext(AuthContext);
+  useEffect(() => {
+    getUserPosts(user.id);
+  });
+  return (
+    <>
+      <Container maxWidth="xs">
+        <Header />
+        <SliderStory />
+        <MediaCard />
+        <Navbar />
+      </Container>
+    </>
+  );
 };
 
 export default Home;

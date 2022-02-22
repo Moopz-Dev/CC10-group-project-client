@@ -1,3 +1,11 @@
+.Arrow-box {
+  display: flex;
+  padding-top: 0;
+  position: relative;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+
 .messenger {
   height: calc(100vh - 90px);
   display: flex;
@@ -28,6 +36,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
+  overflow: visible;
 }
 
 .chatBoxTop {
@@ -42,10 +52,32 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
+  padding-bottom: 20px;
+}
+
+.messageText {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  background-color: aquamarine;
+}
+.messageText.own {
+  background-color: rgb(228, 222, 222);
+  justify-content: end;
+}
+
+.message_from {
+  width: 100%;
+  /* background-color: black; */
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
 }
 
 .chatMessageInput {
-  width: 80%;
+  width: 70%;
   height: 10px;
   padding: 15px;
   border-radius: 50px;
@@ -77,6 +109,12 @@
     display: none;
   }
   .chatOnline {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .Arrow-box {
     display: none;
   }
 }

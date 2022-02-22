@@ -27,9 +27,10 @@ function VideoSidebar({ likes, shares, messages }) {
       </div>
       <div className="videoSidebar__button send">
         <SendOutlinedIcon fontSize="medium" />
-        <p>{shares}</p>
       </div>
+
       <div className="videoSidebar__button morebtn">
+        <p className="shares">{shares}</p>
         <MoreHorizOutlinedIcon />
       </div>
     </div>
