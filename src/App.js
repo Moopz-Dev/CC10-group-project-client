@@ -33,6 +33,7 @@ function App() {
             <Route path="/mesenger" element={<Messenger />} />
             <Route path="/test" element={<ModalStory />} />
             <Route path="/story" element={<Stories />} />
+            <Route path="/postreels" element={<PostReels />} />
             <Route path="/userunknown" element={<UserUnkown />} />
             <Route path="/" element={<Home />} />
             <Route path="*" element={<Navigate to="/" />} />
