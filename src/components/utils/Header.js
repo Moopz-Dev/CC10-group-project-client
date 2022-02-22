@@ -5,7 +5,7 @@ import PostAddIcon from "@mui/icons-material/PostAdd";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ChatOutlinedIcon from "@mui/icons-material/ChatOutlined";
 import { Paper } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
@@ -16,8 +16,10 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import GridOnOutlinedIcon from "@mui/icons-material/GridOnOutlined";
 import MusicVideoIcon from "@mui/icons-material/MusicVideo";
 import CreatePostDialog from "./CreatePostDialog";
+import CreateReels from "./CreateReels";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [state, setState] = useState({
     bottom: false,
   });
@@ -38,6 +40,8 @@ const Header = () => {
     console.log(text);
     if (text === "Post") {
       handleCreatePostDialog();
+    } else if (text === "Reels") {
+      navigate("/postreels");
     }
   };
 
@@ -68,7 +72,7 @@ const Header = () => {
           <ListItem button key={text} onClick={() => handleClickDialog(text)}>
             <ListItemIcon on>
               {index === 0 && <GridOnOutlinedIcon />}
-              <Link to="/postreels">{index === 1 && <InboxIcon />}</Link>
+              {index === 1 && <InboxIcon />}
               {index === 2 && <MusicVideoIcon />}
             </ListItemIcon>
             <ListItemText primary={text} />
