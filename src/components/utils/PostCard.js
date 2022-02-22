@@ -46,6 +46,8 @@ const PostCard = ({ item }) => {
     }
   };
 
+  console.log(item.media);
+
   return (
     <>
       <Card sx={{ marginBottom: '5px' }} elevation={1}>
@@ -74,10 +76,10 @@ const PostCard = ({ item }) => {
           <CarouselPostPic PostMedia={item.PostMedia} />
         ) : (
           <CardMedia
-            component={item.PostMedia.type}
+            component={item.PostMedia[0].type}
             height='400'
             width='350'
-            image={item.PostMedia.type}
+            image={item.PostMedia[0].media}
             alt=''
           />
         )}
