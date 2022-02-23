@@ -38,8 +38,11 @@ const UserOwnerSlideDialog = ({ open, handleCloseDialog }) => {
                 alignItems: 'center',
               }}
             >
-              <Avatar sx={{ height: '60px', width: '60px' }} />
-              {/* <div></div> */}
+              <Avatar 
+                sx={{ height: '60px', width: '60px' }} 
+                // src={} url: from cloudinary 
+              />
+              {/* input profile */}
               <input
                 type='file'
                 accept='image/*'
@@ -49,9 +52,7 @@ const UserOwnerSlideDialog = ({ open, handleCloseDialog }) => {
                   padding: '5px',
                   fontWeight: 'bold',
                 }}
-              >
-                {/* Change profile photo */}
-              </input>
+              />
               {/* <typography sx={{ fontSize: '8px' }}>Change profile photo</typography> */}
             </Box>
             <DialogContentText id='alert-dialog-slide-description'>
