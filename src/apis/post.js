@@ -8,9 +8,9 @@ export const getUserPosts = async userId => {
 	return await axios.get("/posts/user/" + userId);
 };
 
-export const createPost = async (message, media) => {
-	return await axios.post("/posts/", { message, media });
-};
+// export const createPost = async (message, media) => {
+// 	return await axios.post("/posts/", { message, media });
+// };
 
 export const updatePost = async (id, message) => {
 	return await axios.patch("/posts/" + id, { message });
