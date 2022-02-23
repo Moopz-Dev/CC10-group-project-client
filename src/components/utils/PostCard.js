@@ -120,7 +120,7 @@ const PostCard = ({ item }) => {
             <Box>
               <Typography sx={{ fontWeight: '500' }}>
                 {item.PostLikes.length + Number(liked)}{' '}
-                {item.PostLikes.length >= 2 ? 'Likes' : 'Like'}
+                {item.PostLikes.length + Number(liked) >= 2 ? 'Likes' : 'Like'}
               </Typography>
             </Box>
           ) : null}

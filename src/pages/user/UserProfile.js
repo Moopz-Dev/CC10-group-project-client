@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container } from '@mui/material'
-import UserBio from '../../components/user/UserBio'
-import UserHeader from '../../components/user/UserHeader'
+import UserBio from '../../components/user/userOwner/UserBio'
+import UserHeader from '../../components/user/userOwner/UserHeader'
 import Navbar from '../../components/utils/Navbar'
 
 const UserProfile = () => {

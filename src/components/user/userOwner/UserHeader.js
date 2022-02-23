@@ -16,11 +16,11 @@ import MusicVideoIcon from '@mui/icons-material/MusicVideo';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-import { AuthContext } from '../../context/AuthContext';
+import { AuthContext } from '../../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import CreatePostDialog from '../utils/CreatePostDialog';
-import CreatReelDialog from '../reelsCom/CreatReelDialog';
-import CreateStoryDialog from '../stories/CreateStoryDialog';
+import CreatePostDialog from '../../utils/CreatePostDialog';
+import CreatReelDialog from '../../reelsCom/CreatReelDialog';
+import CreateStoryDialog from '../../stories/CreateStoryDialog';
 
 const UserHeader = () => {
   const [state1, setState1] = useState({
