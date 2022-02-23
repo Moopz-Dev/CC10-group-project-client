@@ -141,14 +141,10 @@ const UserHeader = () => {
       handleCreatePostDialog();
     } else if (text === 'Reels') {
       handleCreateReelDialog();
-      // navigate('/postreels');
     } else if (text === 'Story') {
       handleCreateStoryDialog();
     }
   };
-
-  
-
 
   return (
     <>

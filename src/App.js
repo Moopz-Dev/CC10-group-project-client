@@ -13,7 +13,6 @@ import { useContext, useState } from "react";
 import { AuthContext } from "./context/AuthContext";
 import { getToken } from "./services/localStorage.js";
 import Loading from "./pages/Loading/Loading.jsx";
-import PostReels from "./pages/postReels/PostReels.js";
 import SearchFriend from "./pages/search/SearchFriend.js";
 import Activity from "./pages/activity/Activity.js";
 
@@ -34,7 +33,6 @@ function App() {
             <Route path="/mesenger" element={<Messenger />} />
             <Route path="/test" element={<ModalStory />} />
             <Route path="/story" element={<Stories />} />
-            <Route path="/postreels" element={<PostReels />} />
             <Route path="/userunknown" element={<UserUnkown />} />
             <Route path="/activities" element={<Activity />} />
             <Route path="/" element={<Home />} />
