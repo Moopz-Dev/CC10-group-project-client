@@ -28,7 +28,13 @@ function Login() {
         password,
       });
       login(usernameOrPhoneNumberOrEmail, password);
-      console.log(res);
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Login Successful",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       navigate("/");
     } catch (err) {
       Swal.fire(err.response.data.message);
