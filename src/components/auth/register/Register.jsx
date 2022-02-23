@@ -6,7 +6,6 @@ import axios from "../../../config/axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import FacebookLoginButton from "../FacebookLoginButton";
-import { setError } from "../../../context/ErrorContext";
 import { ErrorContext } from "../../../context/ErrorContext";
 import Swal from "sweetalert2";
 
