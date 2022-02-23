@@ -40,7 +40,9 @@ const UserOwnerSlideDialog = ({ open, handleCloseDialog }) => {
             >
               <Avatar sx={{ height: '60px', width: '60px' }} />
               {/* <div></div> */}
-              <span
+              <input
+                type='file'
+                accept='image/*'
                 style={{
                   color: '#bd6efb',
                   fontSize: '14px',
@@ -48,8 +50,8 @@ const UserOwnerSlideDialog = ({ open, handleCloseDialog }) => {
                   fontWeight: 'bold',
                 }}
               >
-                Change profile photo
-              </span>
+                {/* Change profile photo */}
+              </input>
               {/* <typography sx={{ fontSize: '8px' }}>Change profile photo</typography> */}
             </Box>
             <DialogContentText id='alert-dialog-slide-description'>
