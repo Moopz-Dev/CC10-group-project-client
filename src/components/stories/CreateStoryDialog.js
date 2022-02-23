@@ -8,7 +8,6 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import ClearIcon from "@mui/icons-material/Clear";
 import { Box } from "@mui/system";
-import { useNavigate } from "react-router-dom";
 import axios from "../../config/axios";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -18,8 +17,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const CreateStoryDialog = ({ handleCreateStoryDialog, openStoryDialog }) => {
 	const [media, setMedia] = useState([]);
 	const [message, setMessage] = useState("");
-
-	const navigate = useNavigate();
 
 	const fileUpload = e => {
 		const files = e.target.files;
@@ -37,8 +34,10 @@ const CreateStoryDialog = ({ handleCreateStoryDialog, openStoryDialog }) => {
 			formData.append("media", media[i]);
 		}
 		// console.log(formData);
-		axios.post("/stories/", formData).then(res => console.log(res));
-		navigate("/");
+		axios.post("/stories/", formData).then(res => {
+      console.log(res);
+      handleCreateStoryDialog();
+    });
 	};
 	return (
 		<div>

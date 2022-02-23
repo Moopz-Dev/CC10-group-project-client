@@ -11,7 +11,6 @@ import { Box, Container } from '@mui/material';
 import '../../styles/utils/createPostDialog.css';
 // import { FiImage } from 'react-icons/fi';
 import axios from '../../config/axios';
-import { useNavigate } from 'react-router-dom';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction='up' ref={ref} {...props} />;
@@ -20,8 +19,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const CreatePostDialog = ({ handleCreatePostDialog, openDialog }) => {
   const [media, setMedia] = useState([]);
   const [message, setMessage] = useState('');
-
-  const navigate = useNavigate();
 
   const fileUpload = (e) => {
     const files = e.target.files;
@@ -39,8 +36,10 @@ const CreatePostDialog = ({ handleCreatePostDialog, openDialog }) => {
       formData.append('media', media[i]);
     }
     console.log(formData);
-    axios.post('/posts/', formData).then((res) => console.log(res));
-	navigate('/');
+    axios.post('/posts/', formData).then((res) => {
+      console.log(res);
+      handleCreatePostDialog();
+    });
   };
 
   return (
@@ -95,7 +94,7 @@ const CreatePostDialog = ({ handleCreatePostDialog, openDialog }) => {
             {/* for  P' Moo */}
 
             {/* Preview Zone */}
-            <ul style={{ display: 'flex',  }}>
+            <ul style={{ display: 'flex' }}>
               {media.length > 0 &&
                 media.map((item) =>
                   item.type.split('/')[0] === 'video' ? (
