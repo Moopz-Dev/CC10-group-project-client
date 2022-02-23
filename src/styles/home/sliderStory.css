@@ -7,7 +7,6 @@
   overflow-x: scroll;
 }
 .container-story ul {
-  margin-left: 30px;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -7,7 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import Typography from '@mui/material/Typography';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
-import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
+// import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
@@ -17,6 +17,7 @@ import { Link } from 'react-router-dom';
 import { timeSince } from '../../services/timeSince';
 import { AuthContext } from '../../context/AuthContext';
 import { likePost } from '../../apis/like';
+import MenuTooltip from '../specialutils/MenuTooltop';
 
 const PostCard = ({ item }) => {
   const { user } = useContext(AuthContext);
@@ -46,6 +47,17 @@ const PostCard = ({ item }) => {
     }
   };
 
+  console.log(item)
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClickMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleCloseMenu = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <>
       <Card sx={{ marginBottom: '5px' }} elevation={1}>
@@ -67,17 +79,25 @@ const PostCard = ({ item }) => {
             </Box>
           </Box>
           <Box>
-            <BottomNavigationAction size='small' icon={<MoreHorizIcon />} />
+            <BottomNavigationAction 
+              size='small' icon={<MoreHorizIcon />}
+              id='basic-button'
+              aria-controls={open ? 'basic-menu' : undefined}
+              aria-haspopup='true'
+              aria-expanded={open ? 'true' : undefined}
+              onClick={handleClickMenu}
+            />
           </Box>
         </Box>
+          <MenuTooltip handleCloseMenu={handleCloseMenu} open={open} anchorEl={anchorEl} />
         {item.PostMedia.length >= 2 ? (
           <CarouselPostPic PostMedia={item.PostMedia} />
         ) : (
           <CardMedia
-            component={item.PostMedia.type}
+            component={item.PostMedia[0].type}
             height='400'
             width='350'
-            image={item.PostMedia.type}
+            image={item.PostMedia[0].media}
             alt=''
           />
         )}
@@ -93,7 +113,7 @@ const PostCard = ({ item }) => {
               icon={<ModeCommentOutlinedIcon />}
             />
           </Link>
-          <BottomNavigationAction size='small' icon={<SendOutlinedIcon />} />
+          {/* <BottomNavigationAction size='small' icon={<SendOutlinedIcon />} /> */}
         </CardActions>
         <CardContent sx={{ display: 'block' }}>
           {item.PostLikes.length + Number(liked) >= 1 ? (

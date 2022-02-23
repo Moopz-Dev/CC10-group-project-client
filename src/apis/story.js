@@ -8,9 +8,9 @@ export const getUserStories = async userId => {
 	return await axios.get("/stories/user/" + userId);
 };
 
-export const createStory = async (message, media) => {
-	return await axios.post("/stories/", { message, media });
-};
+// export const createStory = async (message, media) => {
+// 	return await axios.post("/stories/", { message, media });
+// };
 
 export const updateStory = async (id, message, media) => {
 	return await axios.patch("/stories/" + id, { message, media });

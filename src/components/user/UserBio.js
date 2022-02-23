@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Avatar, Button, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import user2 from '../../images/profiles/pro2.jpg';
 import StandardImageList from './StandardImageList';
+import SettingsIcon from '@mui/icons-material/Settings';
+import UserOwnerSlideDialog from './UserOwnerSlideDialog';
 
 const UserBio = () => {
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpenDialog = () => {
+    setOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpen(false);
+  };
+
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <Box
+      sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+    >
       <Box sx={{ height: '100px', display: 'flex', justifyContent: 'center' }}>
         <Box
           sx={{
@@ -51,8 +65,33 @@ const UserBio = () => {
           <Typography variant='body'>username</Typography>
           <Typography>I am a good man in the world.</Typography>
         </Box>
-        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <Button variant="outlined" sx={{ width: '350px' }}>Edit Profile</Button>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <Button
+            variant='outlined'
+            sx={{
+              width: '300px',
+              color: '#bd6efb',
+              border: '2px solid #bd6efb',
+            }}
+            onClick={handleClickOpenDialog}
+          >
+            Edit Profile
+          </Button>
+          <UserOwnerSlideDialog open={open} handleCloseDialog={handleCloseDialog} />
+          <SettingsIcon
+            sx={{
+              border: '2px solid #bd6efb',
+              padding: '5px',
+              borderRadius: '3px',
+              color: '#bd6efb',
+            }}
+          />
         </Box>
       </Box>
 

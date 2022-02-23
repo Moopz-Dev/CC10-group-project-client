@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getAllPosts } from '../../apis/post';
 import PostCard from './PostCard';
 
+
 const MediaCard = () => {
   const [allPost, setAllPost] = useState([]);
 

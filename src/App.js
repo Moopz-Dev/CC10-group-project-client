@@ -1,9 +1,9 @@
-import Home from "./pages/Home/Home.js";
+import Home from "./pages/home/Home.js";
 import ReelsPage from "./pages/reels/ReelsPage/ReelsPage";
 import Messenger from "./pages/messenger/Messenger.jsx";
 import Login from "./pages/login/LoginPage.js";
 import Register from "./pages/register/Register.js";
-import Comment from "./pages/Comment/Comment.js";
+import Comment from "./pages/comment/Comment.js";
 import UserProfile from "./pages/user/UserProfile.js";
 import Stories from "./components/utils/Stories.js";
 import UserUnkown from "./components/user/userUnknown/UserUnkown.js";
@@ -13,8 +13,8 @@ import { useContext, useState } from "react";
 import { AuthContext } from "./context/AuthContext";
 import { getToken } from "./services/localStorage.js";
 import Loading from "./pages/Loading/Loading.jsx";
-import PostReels from "./pages/PostReels/PostReels.js";
 import SearchFriend from "./pages/search/SearchFriend.js";
+import Activity from "./pages/activity/Activity.js";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -33,8 +33,8 @@ function App() {
             <Route path="/mesenger" element={<Messenger />} />
             <Route path="/test" element={<ModalStory />} />
             <Route path="/story" element={<Stories />} />
-            <Route path="/postreels" element={<PostReels />} />
             <Route path="/userunknown" element={<UserUnkown />} />
+            <Route path="/activities" element={<Activity />} />
             <Route path="/" element={<Home />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
