@@ -6,6 +6,7 @@
 
 .messageTop {
   display: flex;
+  position: relative;
 }
 
 .messageImg {
@@ -18,10 +19,12 @@
   min-height: 32px;
 }
 .messageText {
+  position: relative;
   padding: 10px;
   border-radius: 20px;
   background-color: rgb(236, 236, 236);
   color: black;
+  min-width: 200px;
   max-width: 300px;
 }
 
@@ -32,11 +35,12 @@
 }
 
 .message.own {
+  background-color: rgb(255, 255, 255);
   align-items: flex-end;
 }
 
 .message.own .messageText {
-  background-color: rgb(190, 207, 228);
+  background-color: rgb(177, 230, 243);
   color: black;
 }
 

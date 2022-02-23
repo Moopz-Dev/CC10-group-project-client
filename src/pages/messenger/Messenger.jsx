@@ -5,10 +5,12 @@ import Message from "../../components/message/Message";
 import "./messenger.css";
 import ChatOnilne from "../../components/chatOnline/ChatOnilne";
 import { AuthContext } from "../../context/AuthContext";
+import { Avatar, Button } from "@mui/material";
 import axios from "axios";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import io from "socket.io-client";
 import { getToken } from "../../services/localStorage";
+import { timeSince } from "../../services/timeSince";
 
 const socket = io("http://localhost:8080");
 
@@ -52,9 +54,23 @@ function Messenger({ username, chats, own }) {
             <div className="chatBoxTop">
               {chat.map((payload, index) => {
                 return (
-                  <p className={getToken ? "messageText own" : "messageText"}>
-                    {payload.name} : {payload.message}
-                  </p>
+                  <div
+                    className={
+                      payload.name === "min" ? "message" : "message own"
+                    }
+                  >
+                    <div className="messageTop">
+                      <p className="messageText">
+                        <span>
+                          <Avatar src={user.profileImg} />
+                          {payload.name} : {payload.message}
+                          {/* {timeSince()} */}
+                          {console.log(payload)}
+                        </span>
+                      </p>
+                    </div>
+                    <div className="messageBottom">1 hour ago</div>
+                  </div>
                 );
               })}
 
@@ -82,9 +98,7 @@ function Messenger({ username, chats, own }) {
           </div>
         </div>
         <div className="chatOnline">
-          <div className="chatOnlineWrapper">
-            <ChatOnilne />
-          </div>
+          <div className="chatOnlineWrapper">{/* <ChatOnilne /> */}</div>
         </div>
       </div>
     </>

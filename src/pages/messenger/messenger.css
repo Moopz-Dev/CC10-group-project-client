@@ -13,7 +13,7 @@
 }
 
 .chatMenu {
-  flex: 3.5;
+  flex: 2;
   /* background-color: aquamarine; */
 }
 
@@ -63,7 +63,7 @@
 }
 .messageText.own {
   background-color: rgb(228, 222, 222);
-  justify-content: end;
+  align-items: flex-end;
 }
 
 .message_from {
@@ -94,9 +94,9 @@
   color: rgb(0, 0, 0);
 }
 
-.chatOnline {
+/* .chatOnline {
   flex: 3;
-}
+} */
 .chatMenuWrapper,
 .chatBoxWrapper,
 .chatOnlineWrapper {
