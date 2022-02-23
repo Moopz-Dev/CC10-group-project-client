@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./register.css";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
@@ -6,6 +6,9 @@ import axios from "../../../config/axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import FacebookLoginButton from "../FacebookLoginButton";
+import { setError } from "../../../context/ErrorContext";
+import { ErrorContext } from "../../../context/ErrorContext";
+import Swal from "sweetalert2";
 
 function Register() {
   const [username, setUserName] = useState("");
@@ -18,11 +21,14 @@ function Register() {
 
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const { setError } = useContext(ErrorContext);
+
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
+      setError("");
       const res = await axios.post("/auth/register", {
         username,
         email,
@@ -31,7 +37,9 @@ function Register() {
         confirmPassword,
       });
       navigate("/login");
-    } catch (err) {}
+    } catch (err) {
+      Swal.fire(err.response.data.message);
+    }
   };
 
   return (
@@ -107,6 +115,7 @@ function Register() {
               Continue with facebook
             </a> */}
             <FacebookLoginButton />
+            <div className="error-box"></div>
           </div>
           <div className="card bottom">
             <p className="bottom-text">

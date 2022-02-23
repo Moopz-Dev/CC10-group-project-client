@@ -6,20 +6,34 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 import { setToken, clearToken, getToken } from "../../../services/localStorage";
 import axios from "../../../config/axios";
+import { setError } from "../../../context/ErrorContext";
+import { ErrorContext } from "../../../context/ErrorContext";
+import Swal from "sweetalert2";
 
 function Login() {
-  const [emailOrPhoneNumber, setEmailOrPhoneNumber] = useState("");
+  const [usernameOrPhoneNumberOrEmail, setEmailOrPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
-  // const [user, setUser] = useState();
+
+  const { setError } = useContext(ErrorContext);
 
   const { login } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
-  const handleSubmitLogin = (e) => {
+  const handleSubmitLogin = async (e) => {
     e.preventDefault();
-    login(emailOrPhoneNumber, password);
-    navigate("/");
+    try {
+      setError("");
+      const res = await axios.post("/auth/login", {
+        usernameOrPhoneNumberOrEmail,
+        password,
+      });
+      login(usernameOrPhoneNumberOrEmail, password);
+      console.log(res);
+      navigate("/");
+    } catch (err) {
+      Swal.fire(err.response.data.message);
+    }
   };
 
   return (
@@ -52,7 +66,7 @@ function Login() {
                   className="input"
                   placeholder="Phone number, username, or email"
                   required
-                  value={emailOrPhoneNumber}
+                  value={usernameOrPhoneNumberOrEmail}
                   onChange={(e) => setEmailOrPhoneNumber(e.target.value)}
                 />
                 <input
@@ -76,6 +90,7 @@ function Login() {
             </form>
             <p className="ortag">⎯⎯⎯⎯ OR ⎯⎯⎯⎯</p>
             <FacebookLoginButton />
+            <p>{}</p>
           </div>
           <div className="card bottom">
             <p className="bottom-text">
