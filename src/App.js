@@ -3,7 +3,6 @@ import ReelsPage from "./pages/reels/ReelsPage/ReelsPage";
 import Messenger from "./pages/messenger/Messenger.jsx";
 import Login from "./pages/login/LoginPage.js";
 import Register from "./pages/register/Register.js";
-import Comment from "./pages/comment/Comment.js";
 import UserProfile from "./pages/user/UserProfile.js";
 import Stories from "./components/utils/Stories.js";
 import UserUnkown from "./components/user/userUnknown/UserUnkown.js";
@@ -27,7 +26,6 @@ function App() {
         ) : (
           <Routes>
             <Route path="/reels" element={<ReelsPage />} />
-            <Route path="/comment" element={<Comment />} />
             <Route path="/searchfriend" element={<SearchFriend />} />
             <Route path="/user" element={<UserProfile />} />
             <Route path="/mesenger" element={<Messenger />} />

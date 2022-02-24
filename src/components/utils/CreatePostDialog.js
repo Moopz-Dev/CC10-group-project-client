@@ -7,10 +7,13 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
-import { Box, Container } from '@mui/material';
+import { Box, Container, Divider } from '@mui/material';
 import '../../styles/utils/createPostDialog.css';
 import axios from '../../config/axios';
 import CarouselPreviewPic from './CarouselPreviewPic';
+import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
+import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
+import ClearIcon from '@mui/icons-material/Clear';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction='up' ref={ref} {...props} />;
@@ -41,13 +44,14 @@ const CreatePostDialog = ({ handleCreatePostDialog, openDialog }) => {
     });
   };
 
-  
+  const handleClearMedia = () => {
+    setMedia([]);
+  };
 
   return (
     <>
       <Container maxWidth='sm'>
-        <Button variant='outlined' onClick={handleCreatePostDialog}>
-        </Button>
+        <Button variant='outlined' onClick={handleCreatePostDialog}></Button>
         <Dialog
           fullScreen
           maxWidth='sm'
@@ -88,34 +92,104 @@ const CreatePostDialog = ({ handleCreatePostDialog, openDialog }) => {
               display: 'flex',
               flexDirection: 'column-reverse',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
             }}
           >
-            <Box sx={{ width: '300px' }}>
+            {media.length === 0 ? (
+              <Box sx={{ width: '300px', bgcolor: 'red', display: 'none' }}>
                 {media.length >= 2 ? (
                   <CarouselPreviewPic medias={media} />
                 ) : (
                   <CarouselPreviewPic medias={media} />
                 )}
-            </Box>
+              </Box>
+            ) : (
+              <Box sx={{ width: '300px' }}>
+                {media.length >= 2 ? (
+                  <CarouselPreviewPic medias={media} />
+                ) : (
+                  <CarouselPreviewPic medias={media} />
+                )}
+              </Box>
+            )}
             <Box>
               {/*Select Button*/}
-              <label role='button'>
-                Select Picture/Video{' '}
-                <input
-                  type='file'
-                  multiple
-                  hidden
-                  accept='image/*,video/mp4'
-                  onChange={fileUpload}
-                />
-              </label>
+              {media.length === 0 ? (
+                <label
+                  role='button'
+                  style={{
+                    fontSize: '20px',
+                    fontFamily: 'roboto',
+                    color: '#a9aaab'
+                  }}
+                >
+                  <Box
+                    sx={{
+                      height: '80px',
+                      display: 'flex',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <InsertPhotoIcon
+                      sx={{
+                        fontSize: '60px',
+                        transform: 'rotate(-10deg)',
+                        color: '#a9aaab',
+                        marginLeft: '20px',
+                      }}
+                    />
+                    <Box
+                      sx={{
+                        position: 'absolute',
+                        right: '140px',
+                        top: '225px',
+                        zIndex: 1100,
+                      }}
+                    >
+                      <OndemandVideoIcon
+                        sx={{
+                          fontSize: '60px',
+                          transform: 'rotate(10deg)',
+                          color: '#a9aaab',
+                        }}
+                      />
+                    </Box>
+                    <br />
+                  </Box>
+                  Select Picture/Video{' '}
+                  <input
+                    type='file'
+                    multiple
+                    hidden
+                    accept='image/*,video/mp4'
+                    onChange={fileUpload}
+                  />
+                </label>
+              ) : (
+                <button
+                  style={{
+                    position: 'absolute',
+                    zIndex: 1100,
+                    right: '35px',
+                    top: '85px',
+                    background: 'white',
+                    borderRadius: '100px',
+                    padding: 0,
+                    height: '30px',
+                    width: '30px',
+                    border: '1px solid gray',
+                  }}
+                  onClick={handleClearMedia}
+                >
+                  <ClearIcon sx={{ fontSize: '18px' }} />
+                </button>
+              )}
             </Box>
           </Box>
           {/* input message */}
+          <Divider />
           <Box
             sx={{
-              outline: '2px dashed red',
               width: '100%',
               height: '100px',
               display: 'flex',
@@ -124,18 +198,16 @@ const CreatePostDialog = ({ handleCreatePostDialog, openDialog }) => {
             }}
           >
             <div>
-              {/* <label>Description</label>{' '} */}
               <input
                 type='text'
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder='Write a caption...'
-                style={{ border: 'none', fontSize: '15px' }}
+                style={{ border: 'none', fontSize: '18px' }}
               />
             </div>
           </Box>
-          {/* Submit button */}
-          {/* <button >Upload Story</button> */}
+          <Divider />
         </Dialog>
       </Container>
     </>
