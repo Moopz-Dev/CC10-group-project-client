@@ -1,30 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import MultiNavUserProfile from './MultiNavUserProfile';
-
+import PostsUserOwnerDialog from './PostsUserOwnerDialog';
 
 const StandardImageList = ({ userPosts }) => {
-  // console.log(userPosts[0].PostMedia)
-  // console.log(userPosts)
+  const [openPostUserDialog, setOpenPostUserDialog] = useState(false);
 
-  const { PostMedia } = userPosts[0]
-  console.log(PostMedia)
+  const handleClickOpenPostUserDialog = () => {
+    setOpenPostUserDialog(!openPostUserDialog);
+  };
 
   return (
     <>
-    <MultiNavUserProfile />
-      <ImageList sx={{ width: 410, minHeight: '100%' }} cols={3} rowHeight={150} gap={1}>
-        {PostMedia.map((item) => (
-          <ImageListItem key={item.media}>
+      <MultiNavUserProfile />
+      <ImageList
+        sx={{
+          width: 390,
+          minHeight: '410px',
+          margin: 0,
+          overflow: 'visible'
+        }}
+        cols={3}
+        rowHeight={140}
+        gap={1}
+      >
+        {userPosts.map((item) => (
+          <ImageListItem
+            key={item.PostMedia[0].media}
+
+          >
             <img
-              src={`${item.media}?w=164&h=164&fit=crop&auto=format`}
-              srcSet={`${item.media}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-              alt={item.id}
+              src={`${item.PostMedia[0].media}?w=160&h=160&fit=crop&auto=format`}
+              srcSet={`${item.PostMedia[0].media}?w=160&h=160&fit=crop&auto=format&dpr=2 2x`}
+              alt=''
+              height={140}
+              onClick={handleClickOpenPostUserDialog}
             />
           </ImageListItem>
         ))}
       </ImageList>
+      <PostsUserOwnerDialog
+        handleClickOpenPostUserDialog={handleClickOpenPostUserDialog}
+        openPostUserDialog={openPostUserDialog}
+      />
     </>
   );
 };

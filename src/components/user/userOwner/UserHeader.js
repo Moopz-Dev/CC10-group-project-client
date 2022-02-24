@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import Box from '@mui/material/Box';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import { Paper, Typography } from '@mui/material';
+import { IconButton, Paper, Typography } from '@mui/material';
 import AddBoxOutlined from '@mui/icons-material/AddBoxOutlined';
 import DehazeIcon from '@mui/icons-material/Dehaze';
 import Drawer from '@mui/material/Drawer';
@@ -21,6 +21,8 @@ import { useNavigate } from 'react-router-dom';
 import CreatePostDialog from '../../utils/CreatePostDialog';
 import CreatReelDialog from '../../reelsCom/CreatReelDialog';
 import CreateStoryDialog from '../../stories/CreateStoryDialog';
+import HttpsOutlinedIcon from '@mui/icons-material/HttpsOutlined';
+import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
 
 const UserHeader = () => {
   const [state1, setState1] = useState({
@@ -31,6 +33,7 @@ const UserHeader = () => {
   });
 
   const { user } = useContext(AuthContext);
+  // console.log(user)
 
   const [openDialog, setOpenDialog] = useState(false);
   const [openReelDialog, setOpenReelDialog] = useState(false);
@@ -110,10 +113,10 @@ const UserHeader = () => {
   const handleClickLogout = (text) => {
     console.log(text);
     if (text === 'Log out') {
-      logout()
-      navigate('/login')
+      logout();
+      navigate('/login');
     }
-  }
+  };
 
   const list2 = (anchor2) => (
     <Box
@@ -150,7 +153,7 @@ const UserHeader = () => {
 
   return (
     <>
-    <CreatePostDialog
+      <CreatePostDialog
         handleCreatePostDialog={handleCreatePostDialog}
         openDialog={openDialog}
       />
@@ -179,22 +182,25 @@ const UserHeader = () => {
             sx={{
               marginLeft: '15px',
               alignSelf: 'center',
-              fontWeight: 600,
+              fontWeight: 500,
               fontSize: '1.2rem',
+              display: 'flex',
+              alignItems: 'center'
             }}
           >
+            {/* public */}
+            {/* <LockOpenOutlinedIcon sx={{ fontSize: '18px' }} /> */}
+            {/* private */}
+            <HttpsOutlinedIcon sx={{ fontSize: '18px' }} />
             {user.username}
           </Typography>
           {/* Drawer for create */}
-          <Box sx={{ width: 150, display: 'flex' }}>
+          <Box sx={{ width: '100px', display: 'flex', justifyContent: 'center' }}>
             {['bottom'].map((anchor1) => (
               <React.Fragment key={anchor1}>
-                <BottomNavigationAction
-                  icon={<AddBoxOutlined />}
-                  onClick={toggleDrawer1(anchor1, true)}
-                >
-                  {anchor1}
-                </BottomNavigationAction>
+                <IconButton onClick={toggleDrawer1(anchor1, true)}>
+                  <AddBoxOutlined />
+                </IconButton>
                 <Drawer
                   anchor={anchor1}
                   open={state1[anchor1]}
@@ -207,12 +213,9 @@ const UserHeader = () => {
             {/* Drawer for log out */}
             {['bottom'].map((anchor2) => (
               <React.Fragment key={anchor2}>
-                <BottomNavigationAction
-                  icon={<DehazeIcon />}
-                  onClick={toggleDrawer2(anchor2, true)}
-                >
-                  {anchor2}
-                </BottomNavigationAction>
+                <IconButton onClick={toggleDrawer2(anchor2, true)}>
+                  <DehazeIcon />
+                </IconButton>
                 <Drawer
                   anchor={anchor2}
                   open={state2[anchor2]}

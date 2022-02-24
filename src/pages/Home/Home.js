@@ -8,13 +8,9 @@ import { getUserPosts } from "../../apis/post";
 import { AuthContext } from "../../context/AuthContext";
 
 const Home = () => {
-  const { user } = useContext(AuthContext);
-  useEffect(() => {
-    getUserPosts(user.id);
-  });
   return (
     <>
-      <Container maxWidth="xs">
+      <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Header />
         <SliderStory />
         <MediaCard />

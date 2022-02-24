@@ -4,7 +4,6 @@ import { Box } from '@mui/system';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import Typography from '@mui/material/Typography';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
@@ -12,12 +11,12 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import { Avatar } from '@mui/material';
 import CarouselPostPic from './CarouselPostPic';
-import { Link } from 'react-router-dom';
 import { timeSince } from '../../services/timeSince';
 import { AuthContext } from '../../context/AuthContext';
 import { likePost } from '../../apis/like';
 import MenuTooltip from '../specialutils/MenuTooltop';
 import CommentDialog from '../comments/CommentDialog';
+import { IconButton } from '@mui/material';
 
 const PostCard = ({ item }) => {
   const { user } = useContext(AuthContext);
@@ -76,7 +75,7 @@ const PostCard = ({ item }) => {
         items={item}
         user={user}
       />
-      <Card sx={{ marginBottom: '5px' }} elevation={1}>
+      <Card sx={{ marginBottom: '5px', width: '390px' }} elevation={1}>
         <Box
           sx={{
             padding: '20px ',
@@ -95,15 +94,16 @@ const PostCard = ({ item }) => {
             </Box>
           </Box>
           <Box>
-            <BottomNavigationAction
+            <IconButton
               size='small'
-              icon={<MoreHorizIcon />}
               id='basic-button'
               aria-controls={open ? 'basic-menu' : undefined}
               aria-haspopup='true'
               aria-expanded={open ? 'true' : undefined}
               onClick={handleClickMenu}
-            />
+            >
+              <MoreHorizIcon />
+            </IconButton>
           </Box>
         </Box>
         <MenuTooltip
@@ -122,17 +122,13 @@ const PostCard = ({ item }) => {
             alt=''
           />
         )}
-        <CardActions sx={{ display: 'flex', width: '40%', height: '30px' }}>
-          <BottomNavigationAction
-            size='small'
-            icon={Icon}
-            onClick={handleClickLiked}
-          />
-          <BottomNavigationAction
-            size='small'
-            icon={<ModeCommentOutlinedIcon />}
-            onClick={handleClickOpenComment}
-          />
+        <CardActions sx={{ display: 'flex', width: '40%', height: '20px' }}>
+          <IconButton size='small' onClick={handleClickLiked}>
+            {Icon}
+          </IconButton>
+          <IconButton size='small' onClick={handleClickOpenComment}>
+            <ModeCommentOutlinedIcon />
+          </IconButton>
         </CardActions>
         <CardContent sx={{ display: 'block' }}>
           {item.PostLikes.length + Number(liked) >= 1 ? (

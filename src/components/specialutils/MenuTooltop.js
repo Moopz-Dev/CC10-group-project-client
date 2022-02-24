@@ -4,7 +4,8 @@ import MenuItem from '@mui/material/MenuItem';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditIcon from '@mui/icons-material/Edit';
 
-const MenuTooltip = ({ handleCloseMenu, anchorEl, open }) => {
+const MenuTooltip = ({ handleCloseMenu, anchorEl, open, items }) => {
+  
   return (
     <div>
       <Menu

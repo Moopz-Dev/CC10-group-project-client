@@ -10,13 +10,9 @@ import { UserDataContext } from '../../../context/UserDataContext';
 const UserBio = () => {
   const [open, setOpen] = useState(false);
 
-  const { user } = useContext(AuthContext)
-  const { followerCount, followingCount, userPosts } = useContext(UserDataContext);
-
-  // console.log(followerCount)
-  // console.log(followingCount)
-  // console.log(postCount);
-  // console.log(userPosts[0].PostMedia)
+  const { user } = useContext(AuthContext);
+  const { followerCount, followingCount, userPosts } =
+    useContext(UserDataContext);
 
   const handleClickOpenDialog = () => {
     setOpen(true);
@@ -30,81 +26,103 @@ const UserBio = () => {
     <Box
       sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
     >
-      <Box sx={{ height: '100px', display: 'flex', justifyContent: 'center' }}>
-        <Box
-          sx={{
-            width: '100px',
-            height: '100px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <Avatar
-            src={user.profileImg}
-            sx={{ width: 70, height: 70, marginLeft: '20px' }}
-          />
-        </Box>
+      <Box>
         <Box
           sx={{
             height: '100px',
-            width: '300px',
             display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '20px',
+            justifyContent: 'center'
           }}
         >
-          <Box sx={{ textAlign: 'center' }}>
-            <Typography>
-              {userPosts[0].PostMedia.length}
-            </Typography>
-            <Typography>
-              {userPosts[0].PostMedia.length > 1 ? 'Posts' : 'Post'}
-            </Typography>
-          </Box>
-          <Box sx={{ textAlign: 'center' }}>
-            <Typography>{followerCount.followersCount}</Typography>
-            <Typography>{followerCount.followersCount > 1? 'Followers': 'Follower'}</Typography>
-          </Box>
-          <Box sx={{ textAlign: 'center' }}>
-            <Typography>{followingCount.followingCount}</Typography>
-            <Typography>Following</Typography>
-          </Box>
-        </Box>
-      </Box>
-      <Box sx={{ height: '100px' }}>
-        <Box sx={{ height: '60px', padding: '0 15px', paddingBottom: '10px' }}>
-          <Typography variant='body' sx={{ fontWeight: 'bold' }}>{user.name}</Typography>
-          <Typography>{user.bio}</Typography>
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <Button
-            variant='outlined'
+          <Box
             sx={{
-              width: '300px',
-              color: '#bd6efb',
-              border: '2px solid #bd6efb',
+              width: '100px',
+              height: '100px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
-            onClick={handleClickOpenDialog}
           >
-            Edit Profile
-          </Button>
-          <UserOwnerSlideDialog open={open} handleCloseDialog={handleCloseDialog} />
-          <SettingsIcon
+            <Avatar
+              src={user.profileImg}
+              sx={{ width: 70, height: 70, marginLeft: '20px' }}
+            />
+          </Box>
+          <Box
             sx={{
-              border: '2px solid #bd6efb',
-              padding: '5px',
-              borderRadius: '3px',
-              color: '#bd6efb',
+              height: '100px',
+              width: '300px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '20px',
             }}
-          />
+          >
+            <Box sx={{ textAlign: 'center' }}>
+              <Typography sx={{ fontWeight: '500' }}>
+                {userPosts[0].PostMedia.length}
+              </Typography>
+              <Typography>
+                {userPosts[0].PostMedia.length > 1 ? 'Posts' : 'Post'}
+              </Typography>
+            </Box>
+            <Box sx={{ textAlign: 'center' }}>
+              <Typography sx={{ fontWeight: '500' }}>
+                {followerCount.followersCount}
+              </Typography>
+              <Typography>
+                {followerCount.followersCount > 1 ? 'Followers' : 'Follower'}
+              </Typography>
+            </Box>
+            <Box sx={{ textAlign: 'center' }}>
+              <Typography sx={{ fontWeight: '500' }}>
+                {followingCount.followingCount}
+              </Typography>
+              <Typography>Following</Typography>
+            </Box>
+          </Box>
+        </Box>
+        <Box sx={{ height: '100px' }}>
+          <Box
+            sx={{ height: '60px', padding: '0 15px', paddingBottom: '10px' }}
+          >
+            <Typography sx={{ fontWeight: '500' }}>{user.name}</Typography>
+            <Typography>{user.bio}</Typography>
+          </Box>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '3px',
+            }}
+          >
+            <Button
+              variant='outlined'
+              sx={{
+                width: '320px',
+                color: '#bd6efb',
+                border: '1px solid #bd6efb',
+              }}
+              onClick={handleClickOpenDialog}
+            >
+              Edit Profile
+            </Button>
+            <UserOwnerSlideDialog
+              open={open}
+              handleCloseDialog={handleCloseDialog}
+            />
+            <SettingsIcon
+              sx={{
+                border: '1px solid #bd6efb',
+                bgcolor: '#bd6efb',
+                padding: '5px',
+                borderRadius: '3px',
+                color: 'white',
+              }}
+              onClick={handleClickOpenDialog}
+            />
+          </Box>
         </Box>
       </Box>
 

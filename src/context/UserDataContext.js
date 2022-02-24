@@ -44,23 +44,24 @@ const UserDataContextProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchGetMePosts = async () => {
-    //   if (!user) return;
-      try {
-        const res = await getMyPosts();
-        const result = res.data
+      if (user) {
+        try {
+          const res = await getMyPosts();
+          const result = res.data;
 
-        setuserPosts(result);
-      } catch (err) {
-        console.log(err);
+          setuserPosts(result);
+        } catch (err) {
+          console.log(err);
+        }
       }
     };
     fetchGetMePosts();
-  }, []);
-
-  console.log(userPosts)
+  }, [user]);
 
   return (
-    <UserDataContext.Provider value={{ followerCount, followingCount, userPosts }}>
+    <UserDataContext.Provider
+      value={{ followerCount, followingCount, userPosts }}
+    >
       {children}
     </UserDataContext.Provider>
   );
