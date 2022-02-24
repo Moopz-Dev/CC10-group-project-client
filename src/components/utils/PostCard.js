@@ -25,7 +25,7 @@ const PostCard = ({ item }) => {
   const isUserLikedObj = item.PostLikes.find((el) => el.userId === user.id);
   const chechUserLiked = typeof isUserLikedObj === 'object' ? true : false;
 
-  const [liked, setLiked] = useState(chechUserLiked);;
+  const [liked, setLiked] = useState(chechUserLiked);
 
   const Icon = liked ? (
     <FavoriteOutlinedIcon sx={{ color: 'red' }} />
@@ -53,7 +53,7 @@ const PostCard = ({ item }) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const open = Boolean(anchorEl);
-  
+
   const handleClickMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -68,10 +68,14 @@ const PostCard = ({ item }) => {
     setOpenComment(!openComment);
   };
 
-
   return (
     <>
-    <CommentDialog openComment={openComment} handleClickOpenComment={handleClickOpenComment} />
+      <CommentDialog
+        openComment={openComment}
+        handleClickOpenComment={handleClickOpenComment}
+        items={item}
+        user={user}
+      />
       <Card sx={{ marginBottom: '5px' }} elevation={1}>
         <Box
           sx={{
@@ -91,8 +95,9 @@ const PostCard = ({ item }) => {
             </Box>
           </Box>
           <Box>
-            <BottomNavigationAction 
-              size='small' icon={<MoreHorizIcon />}
+            <BottomNavigationAction
+              size='small'
+              icon={<MoreHorizIcon />}
               id='basic-button'
               aria-controls={open ? 'basic-menu' : undefined}
               aria-haspopup='true'
@@ -101,7 +106,11 @@ const PostCard = ({ item }) => {
             />
           </Box>
         </Box>
-          <MenuTooltip handleCloseMenu={handleCloseMenu} open={open} anchorEl={anchorEl} />
+        <MenuTooltip
+          handleCloseMenu={handleCloseMenu}
+          open={open}
+          anchorEl={anchorEl}
+        />
         {item.PostMedia.length >= 2 ? (
           <CarouselPostPic PostMedia={item.PostMedia} />
         ) : (
@@ -119,12 +128,11 @@ const PostCard = ({ item }) => {
             icon={Icon}
             onClick={handleClickLiked}
           />
-            <BottomNavigationAction
-              size='small'
-              icon={<ModeCommentOutlinedIcon />}
-              onClick={handleClickOpenComment}
-            />
-          {/* <BottomNavigationAction size='small' icon={<SendOutlinedIcon />} /> */}
+          <BottomNavigationAction
+            size='small'
+            icon={<ModeCommentOutlinedIcon />}
+            onClick={handleClickOpenComment}
+          />
         </CardActions>
         <CardContent sx={{ display: 'block' }}>
           {item.PostLikes.length + Number(liked) >= 1 ? (
@@ -135,28 +143,39 @@ const PostCard = ({ item }) => {
               </Typography>
             </Box>
           ) : null}
-          <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Box sx={{ display: 'flex' }}>
-              <Typography sx={{ color: 'black', fontWeight: 'bold' }}>
-                {item.User.username}
-              </Typography>
-              &nbsp;&nbsp;
-              <Typography>{item.message}</Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              <Box sx={{ display: 'flex' }}>
+                <Typography sx={{ color: 'black', fontWeight: 'bold' }}>
+                  {item.User.username}
+                </Typography>
+                &nbsp;&nbsp;
+                <Typography>{item.message}</Typography>
+              </Box>
+              {item.PostComments.length >= 1 ? (
+                <Box
+                  component='span'
+                  role='button'
+                  onClick={handleClickOpenComment}
+                >
+                  <Typography sx={{ color: 'gray', fontSize: '16px' }}>
+                    View all {item.PostComments.length}{' '}
+                    {item.PostComments.length >= 2 ? 'comments' : 'comment'}
+                  </Typography>
+                </Box>
+              ) : null}
             </Box>
             <Box>
-              <Typography sx={{ color: 'gray' }}>
+              <Typography sx={{ color: 'gray', fontSize: '14px' }}>
                 {timeSince(new Date(item.createdAt))}
               </Typography>
             </Box>
           </Box>
-          {item.PostComments.length >= 1 ? (
-            <Box component='span' role='button' onClick={handleClickOpenComment}>
-              <Typography sx={{ color: 'gray', fontSize: '14px' }}>
-                View all {item.PostComments.length}{' '}
-                {item.PostComments.length >= 2 ? 'comments' : 'comment'}
-              </Typography>
-            </Box>
-          ) : null}
         </CardContent>
       </Card>
     </>

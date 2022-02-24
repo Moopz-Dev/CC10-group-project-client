@@ -18,8 +18,6 @@ export const Navbar = () => {
 
   const { user } = useContext(AuthContext);
 
-  console.log(user)
-
   return (
     <>
       <Box sx={{ pb: 7 }} ref={ref}>
@@ -45,7 +43,7 @@ export const Navbar = () => {
             </Link>
             <Link to='/user'>
               <Box>
-                <Avatar sx={{ width: 24, height: 24, marginTop: '15px', marginLeft: '15px' }}  src={user1}/>
+                <Avatar sx={{ width: 24, height: 24, marginTop: '15px', marginLeft: '15px' }}  src={user.profileImg}/>
               </Box>
             </Link>
           </BottomNavigation>

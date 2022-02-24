@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Box, typography } from '@mui/system';
 import Dialog from '@mui/material/Dialog';
-import ListItem from '@mui/material/ListItem';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import AppBar from '@mui/material/AppBar';
@@ -20,7 +19,11 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction='left' ref={ref} {...props} />;
 });
 
-const CommentDialog = ({ openComment, handleClickOpenComment }) => {
+const CommentDialog = ({ openComment, handleClickOpenComment, items, user }) => {
+    // console.log(items)
+
+    console.log(user)
+
   return (
     <div>
       <Dialog
@@ -137,7 +140,7 @@ const CommentDialog = ({ openComment, handleClickOpenComment }) => {
           }}
         >
           <Box component='form' sx={{ display: 'flex', gap: '10px' }}>
-            <Avatar />
+            <Avatar src={user.profileImg} />
             <TextField
               placeholder='add acomment as username1'
               size='small'

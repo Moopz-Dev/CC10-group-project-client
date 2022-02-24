@@ -30,6 +30,8 @@ const UserHeader = () => {
     bottom: false,
   });
 
+  const { user } = useContext(AuthContext);
+
   const [openDialog, setOpenDialog] = useState(false);
   const [openReelDialog, setOpenReelDialog] = useState(false);
   const [openStoryDialog, setOpenStoryDialog] = useState(false);
@@ -181,7 +183,7 @@ const UserHeader = () => {
               fontSize: '1.2rem',
             }}
           >
-            username1
+            {user.username}
           </Typography>
           {/* Drawer for create */}
           <Box sx={{ width: 150, display: 'flex' }}>

@@ -1,13 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Avatar, Button, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import user2 from '../../../images/profiles/pro2.jpg';
 import StandardImageList from './StandardImageList';
 import SettingsIcon from '@mui/icons-material/Settings';
 import UserOwnerSlideDialog from './UserOwnerSlideDialog';
+import { AuthContext } from '../../../context/AuthContext';
+import { UserDataContext } from '../../../context/UserDataContext';
 
 const UserBio = () => {
   const [open, setOpen] = useState(false);
+
+  const { user } = useContext(AuthContext)
+  const { followerCount, followingCount, userPosts } = useContext(UserDataContext);
+
+  // console.log(followerCount)
+  // console.log(followingCount)
+  // console.log(postCount);
+  // console.log(userPosts[0].PostMedia)
 
   const handleClickOpenDialog = () => {
     setOpen(true);
@@ -32,7 +41,7 @@ const UserBio = () => {
           }}
         >
           <Avatar
-            src={user2}
+            src={user.profileImg}
             sx={{ width: 70, height: 70, marginLeft: '20px' }}
           />
         </Box>
@@ -47,23 +56,27 @@ const UserBio = () => {
           }}
         >
           <Box sx={{ textAlign: 'center' }}>
-            <Typography>6</Typography>
-            <Typography>Posts</Typography>
+            <Typography>
+              {userPosts[0].PostMedia.length}
+            </Typography>
+            <Typography>
+              {userPosts[0].PostMedia.length > 1 ? 'Posts' : 'Post'}
+            </Typography>
           </Box>
           <Box sx={{ textAlign: 'center' }}>
-            <Typography>0</Typography>
-            <Typography>Followers</Typography>
+            <Typography>{followerCount.followersCount}</Typography>
+            <Typography>{followerCount.followersCount > 1? 'Followers': 'Follower'}</Typography>
           </Box>
           <Box sx={{ textAlign: 'center' }}>
-            <Typography>0</Typography>
+            <Typography>{followingCount.followingCount}</Typography>
             <Typography>Following</Typography>
           </Box>
         </Box>
       </Box>
       <Box sx={{ height: '100px' }}>
-        <Box sx={{ height: '60px', padding: '0 15px' }}>
-          <Typography variant='body'>username</Typography>
-          <Typography>I am a good man in the world.</Typography>
+        <Box sx={{ height: '60px', padding: '0 15px', paddingBottom: '10px' }}>
+          <Typography variant='body' sx={{ fontWeight: 'bold' }}>{user.name}</Typography>
+          <Typography>{user.bio}</Typography>
         </Box>
         <Box
           sx={{
@@ -95,7 +108,7 @@ const UserBio = () => {
         </Box>
       </Box>
 
-      <StandardImageList />
+      <StandardImageList userPosts={userPosts} />
     </Box>
   );
 };
