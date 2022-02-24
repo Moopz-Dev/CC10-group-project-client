@@ -40,11 +40,12 @@ const HeaderSearch = () => {
 						left: 0,
 						right: 0,
 						display: "flex",
+						height: '50px',
 						justifyContent: "space-between",
 						alignItems: "center",
 						zIndex: 1100,
 					}}
-					elevation={1}>
+					elevation={0}>
 					<div
 						style={{
 							width: "10px",
@@ -56,7 +57,7 @@ const HeaderSearch = () => {
 					</div>
 
 					{/* search */}
-					<div>
+					<div style={{ marginTop: '-10px' }}>
 						<Stack spacing={2} sx={{ width: 300, height: "30px" }}>
 							{allUsers.length > 0 && (
 								<Autocomplete
@@ -68,9 +69,9 @@ const HeaderSearch = () => {
 									renderInput={params => (
 										<TextField
 											{...params}
-											label="Search"
 											onChange={e => setSearchQuery(e.target.value)}
 											value={searchQuery}
+											placeholder='Search'
 											InputProps={{
 												...params.InputProps,
 												type: "search",

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Avatar, Button, Typography } from '@mui/material';
+import { Avatar, Button, Card, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import StandardImageList from './StandardImageList';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -24,14 +24,19 @@ const UserBio = () => {
 
   return (
     <Box
-      sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        margin: '20px 0 20px 0',
+      }}
     >
-      <Box>
+      <Card sx={{ width: '390px', height: '280px' }}>
         <Box
           sx={{
-            height: '100px',
+            height: '120px',
             display: 'flex',
-            justifyContent: 'center'
+            justifyContent: 'center',
           }}
         >
           <Box
@@ -93,8 +98,10 @@ const UserBio = () => {
             sx={{
               display: 'flex',
               justifyContent: 'center',
-              alignItems: 'center',
+              alignItems: 'flex-start',
               gap: '3px',
+              height: '50px',
+              padding: '20px 0'
             }}
           >
             <Button
@@ -124,7 +131,7 @@ const UserBio = () => {
             />
           </Box>
         </Box>
-      </Box>
+      </Card>
 
       <StandardImageList userPosts={userPosts} />
     </Box>

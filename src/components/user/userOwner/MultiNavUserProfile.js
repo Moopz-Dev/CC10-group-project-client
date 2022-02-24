@@ -9,7 +9,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 const MultiNavUserProfile = () => {
   return (
     <>
-    <Box sx={{ width: 390, marginTop: '30px' }}>
+    <Box sx={{ width: 390 }}>
         <Paper
           sx={{
             display: 'flex',
