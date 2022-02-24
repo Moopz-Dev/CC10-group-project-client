@@ -1,37 +1,89 @@
-import { Box, Button, Container } from '@mui/material';
+import { Box, Button, Container, FormControl, TextField } from '@mui/material';
 import React from 'react';
 import ReactInstaStories from 'react-insta-stories';
 import CloseIcon from '@mui/icons-material/Close';
-
-function SeeMore() {
-  return <div>see more</div>;
-}
+import { useFormControl } from '@mui/material/FormControl';
+import { display } from '@mui/system';
+// import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import SendIcon from '@mui/icons-material/Send';
+import { useNavigate } from 'react-router-dom';
+import Carousel from 'react-material-ui-carousel';
 
 const Stories = () => {
+  const navigate = useNavigate();
+
   return (
     // <Container maxWidth="sm" sx={{ display: 'flex', justifyContent: 'center' }}>
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}
-      maxWidth='sm'
-    >
-      <Box sx={{ outline: '2px solid red', width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
-        <Button>
-          <CloseIcon />
-        </Button>
+    // <Carousel>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+        maxWidth='sm'
+      >
+        <Box
+          sx={{
+            width: '100%',
+            height: '40px',
+            display: 'flex',
+            justifyContent: 'flex-end',
+            position: 'absolute',
+            zIndex: 1100,
+            top: '10px',
+          }}
+        >
+          <Button onClick={(e) => navigate('/')}>
+            <CloseIcon sx={{ color: 'white', fontSize: '30px' }} />
+          </Button>
+        </Box>
+        <ReactInstaStories
+          stories={stories}
+          defaultInterval={1500}
+          width='100vw'
+          height='100vh'
+        />
+        <Box
+          sx={{
+            position: 'absolute',
+            zIndex: 1100,
+            // outline: '2px dashed red',
+            width: '100%',
+            bottom: '10px',
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <FormControl>
+            <TextField
+              size='small'
+              sx={{
+                border: '1px solid white',
+                textColor: 'white',
+                borderRadius: '50px',
+                width: '250px',
+              }}
+              placeholder='Send Message'
+              // color='inherite'
+            />
+          </FormControl>
+          <span
+            role='button'
+            style={{ transform: 'rotate(-45deg)', marginLeft: '20px' }}
+          >
+            <SendIcon sx={{ color: 'white', fontSize: '30px' }} />
+          </span>
+          <Button>
+            <FavoriteBorderIcon sx={{ color: 'white', fontSize: '30px' }} />
+          </Button>
+        </Box>
+        <Box></Box>
       </Box>
-      <ReactInstaStories
-        stories={stories}
-        defaultInterval={1500}
-        width='100vw'
-        height='97vh'
-      />
-    </Box>
-    // </Container>
+    // {/* </Carousel> */}
+    // {/* // </Container> */}
   );
 };
 export default Stories;
@@ -39,7 +91,7 @@ export default Stories;
 const stories = [
   {
     url: 'https://picsum.photos/1080/1920',
-    seeMore: <SeeMore />,
+    // seeMore: <SeeMore />,
     header: {
       heading: 'Mohit Karekar',
       subheading: 'Posted 5h ago',
@@ -55,27 +107,13 @@ const stories = [
     },
   },
   {
-    url: 'https://media.idownloadblog.com/wp-content/uploads/2016/04/iPhone-wallpaper-abstract-portrait-stars-macinmac.jpg',
+    url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
     header: {
       heading: 'mohitk05/react-insta-stories',
       subheading: 'Posted 32m ago',
       profileImage:
         'https://avatars0.githubusercontent.com/u/24852829?s=400&v=4',
     },
-  },
-  {
-    url: 'https://storage.googleapis.com/coverr-main/mp4/Footboys.mp4',
-    type: 'video',
-    duration: 1000,
-  },
-  {
-    url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
-    type: 'video',
-    seeMore: <SeeMore />,
-  },
-  {
-    url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
     type: 'video',
   },
-  'https://images.unsplash.com/photo-1534856966153-c86d43d53fe0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80',
 ];
