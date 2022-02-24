@@ -7,7 +7,6 @@ import CardMedia from '@mui/material/CardMedia';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import Typography from '@mui/material/Typography';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
-// import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
@@ -18,6 +17,7 @@ import { timeSince } from '../../services/timeSince';
 import { AuthContext } from '../../context/AuthContext';
 import { likePost } from '../../apis/like';
 import MenuTooltip from '../specialutils/MenuTooltop';
+import CommentDialog from '../comments/CommentDialog';
 
 const PostCard = ({ item }) => {
   const { user } = useContext(AuthContext);
@@ -26,14 +26,17 @@ const PostCard = ({ item }) => {
   const chechUserLiked = typeof isUserLikedObj === 'object' ? true : false;
 
   const [liked, setLiked] = useState(chechUserLiked);;
+
   const Icon = liked ? (
     <FavoriteOutlinedIcon sx={{ color: 'red' }} />
   ) : (
     <FavoriteBorderIcon />
   );
+
   const handleLiked = () => {
     setLiked(!liked);
   };
+
   const handleClickLiked = () => {
     handleLiked();
     handleClickLike();
@@ -47,19 +50,28 @@ const PostCard = ({ item }) => {
     }
   };
 
-  console.log(item)
-
   const [anchorEl, setAnchorEl] = useState(null);
+
   const open = Boolean(anchorEl);
+  
   const handleClickMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleCloseMenu = () => {
     setAnchorEl(null);
   };
 
+  const [openComment, setOpenComment] = useState(false);
+
+  const handleClickOpenComment = () => {
+    setOpenComment(!openComment);
+  };
+
+
   return (
     <>
+    <CommentDialog openComment={openComment} handleClickOpenComment={handleClickOpenComment} />
       <Card sx={{ marginBottom: '5px' }} elevation={1}>
         <Box
           sx={{
@@ -107,12 +119,11 @@ const PostCard = ({ item }) => {
             icon={Icon}
             onClick={handleClickLiked}
           />
-          <Link to='/comment'>
             <BottomNavigationAction
               size='small'
               icon={<ModeCommentOutlinedIcon />}
+              onClick={handleClickOpenComment}
             />
-          </Link>
           {/* <BottomNavigationAction size='small' icon={<SendOutlinedIcon />} /> */}
         </CardActions>
         <CardContent sx={{ display: 'block' }}>
@@ -139,7 +150,7 @@ const PostCard = ({ item }) => {
             </Box>
           </Box>
           {item.PostComments.length >= 1 ? (
-            <Box>
+            <Box component='span' role='button' onClick={handleClickOpenComment}>
               <Typography sx={{ color: 'gray', fontSize: '14px' }}>
                 View all {item.PostComments.length}{' '}
                 {item.PostComments.length >= 2 ? 'comments' : 'comment'}
