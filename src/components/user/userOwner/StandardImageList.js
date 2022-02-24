@@ -1,7 +1,7 @@
 import React from 'react';
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import ChatBubbleOutlinedIcon from '@mui/icons-material/ChatBubbleOutlined';
-import '../../styles/user/standardImageList.css';
+import '../../../styles/user/standardImageList.css';
 import GridOnIcon from '@mui/icons-material/GridOn';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 

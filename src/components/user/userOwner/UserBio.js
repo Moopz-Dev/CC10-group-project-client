@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Avatar, Button, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import user2 from '../../images/profiles/pro2.jpg';
+import user2 from '../../../images/profiles/pro2.jpg';
 import StandardImageList from './StandardImageList';
 import SettingsIcon from '@mui/icons-material/Settings';
 import UserOwnerSlideDialog from './UserOwnerSlideDialog';

@@ -1,7 +1,6 @@
-// const createdAt = "2022-s02-20T12:17:48.000Z"
+// const createdAt = "2022-s02-20T12:17:48.000Z";
 
 export function timeSince(date) {
-
   const seconds = Math.floor((new Date() - date) / 1000);
 
   let interval = seconds / 31536000;

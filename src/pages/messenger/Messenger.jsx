@@ -19,6 +19,7 @@ function Messenger({ username, chats, own }) {
   const [conversation, setConversation] = useState([]);
   // const [user, setUser] = useState(null);
   const name = user.username;
+  const createdAt = "2022-s02-20T12:17:48.000Z";
 
   const [chat, setChat] = useState([]);
 
@@ -69,7 +70,7 @@ function Messenger({ username, chats, own }) {
                         </span>
                       </p>
                     </div>
-                    <div className="messageBottom">1 hour ago</div>
+                    <div className="messageBottom">{timeSince(new Date())}</div>
                   </div>
                 );
               })}

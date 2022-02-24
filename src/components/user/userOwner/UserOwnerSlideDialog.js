@@ -11,8 +11,8 @@ import { Avatar, Box, ListItem } from "@mui/material";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
-import axios from "../../config/axios";
-import { AuthContext } from "../../context/AuthContext";
+import axios from "../../../config/axios";
+import { AuthContext } from "../../../context/AuthContext";
 
 const Transition = forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;

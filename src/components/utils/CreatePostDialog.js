@@ -9,8 +9,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
 import { Box, Container } from '@mui/material';
 import '../../styles/utils/createPostDialog.css';
-// import { FiImage } from 'react-icons/fi';
 import axios from '../../config/axios';
+import CarouselPreviewPic from './CarouselPreviewPic';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction='up' ref={ref} {...props} />;
@@ -26,7 +26,6 @@ const CreatePostDialog = ({ handleCreatePostDialog, openDialog }) => {
       setMedia([...e.target.files]);
       // setUpload(e.target.files);
     }
-    console.log(media);
   };
   const uploadPost = (e) => {
     e.preventDefault();
@@ -42,11 +41,12 @@ const CreatePostDialog = ({ handleCreatePostDialog, openDialog }) => {
     });
   };
 
+  
+
   return (
     <>
       <Container maxWidth='sm'>
         <Button variant='outlined' onClick={handleCreatePostDialog}>
-          {/* Open full-screen dialog */}
         </Button>
         <Dialog
           fullScreen
@@ -84,37 +84,22 @@ const CreatePostDialog = ({ handleCreatePostDialog, openDialog }) => {
           </AppBar>
           <Box
             sx={{
-              outline: '2px dashed red',
-              height: '350px',
+              height: '400px',
               display: 'flex',
-              justifyContent: 'center',
+              flexDirection: 'column-reverse',
               alignItems: 'center',
+              justifyContent: 'center'
             }}
           >
-            {/* for  P' Moo */}
-
-            {/* Preview Zone */}
-            <ul style={{ display: 'flex' }}>
-              {media.length > 0 &&
-                media.map((item) =>
-                  item.type.split('/')[0] === 'video' ? (
-                    <video
-                      src={URL.createObjectURL(item)}
-                      width={200}
-                      height={250}
-                    ></video>
-                  ) : (
-                    <img
-                      src={URL.createObjectURL(item)}
-                      alt=''
-                      width={200}
-                      height={250}
-                    />
-                  )
+            <Box sx={{ width: '300px' }}>
+                {media.length >= 2 ? (
+                  <CarouselPreviewPic medias={media} />
+                ) : (
+                  <CarouselPreviewPic medias={media} />
                 )}
-            </ul>
-            {/*Select Button*/}
-            <div>
+            </Box>
+            <Box>
+              {/*Select Button*/}
               <label role='button'>
                 Select Picture/Video{' '}
                 <input
@@ -125,7 +110,7 @@ const CreatePostDialog = ({ handleCreatePostDialog, openDialog }) => {
                   onChange={fileUpload}
                 />
               </label>
-            </div>
+            </Box>
           </Box>
           {/* input message */}
           <Box
