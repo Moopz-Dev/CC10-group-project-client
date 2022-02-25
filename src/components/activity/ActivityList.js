@@ -8,7 +8,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 const ActivityList = () => {
   return (
     <>
-      <Box sx={{ height: '80vh' }}>
+      <Box sx={{ height: '100vh' }}>
         <Box sx={{ padding: '25px 0 10px 10px', fontWeight: 'bold' }}>
           This week
         </Box>

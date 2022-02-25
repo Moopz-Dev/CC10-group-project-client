@@ -6,7 +6,7 @@ import Navbar from '../../components/utils/Navbar'
 
 const UserProfile = () => {
   return (
-    <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: 0 }}>
+    <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: 0, height: '120vh' }}>
         <UserHeader />
         <UserBio />
         <Navbar />

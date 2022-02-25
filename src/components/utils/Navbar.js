@@ -20,10 +20,10 @@ export const Navbar = () => {
 
   return (
     <>
-      <Box sx={{ pb: 7 }} ref={ref}>
+      <Box ref={ref}>
         <Paper
-          sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 1100 }}
-          elevation={3}
+          sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 1100, height: '48px' }}
+          elevation={1}
         >
           <BottomNavigation
             showLabels
@@ -42,8 +42,16 @@ export const Navbar = () => {
               <BottomNavigationAction icon={<MovieCreationIcon />} />
             </Link>
             <Link to='/user'>
-              <Box>
-                <Avatar sx={{ width: 24, height: 24, marginTop: '15px', marginLeft: '15px' }}  src={user.profileImg}/>
+              <Box
+                sx={{
+                  width: '80px',
+                  height: '56px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <Avatar sx={{ width: 24, height: 24 }} src={user.profileImg} />
               </Box>
             </Link>
           </BottomNavigation>

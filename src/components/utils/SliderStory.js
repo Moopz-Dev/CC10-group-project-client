@@ -9,7 +9,7 @@ import '../../styles/home/sliderStory.css';
 const SliderStory = () => {
   return (
     <>
-      <Card sx={{ marginTop: '26px' }}>
+      <Card sx={{ width: '390px' }}>
         <div className='container-story'>
           <ul>
             <li>

@@ -6,7 +6,7 @@ import Navbar from '../../components/utils/Navbar';
 
 const Activity = () => {
   return (
-    <Container maxWidth="sm" >
+    <Container>
         <ActivityHeader />
         <ActivityList />
         <Navbar />

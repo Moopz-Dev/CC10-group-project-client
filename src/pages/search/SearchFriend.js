@@ -7,7 +7,7 @@ const SearchFriend = () => {
   return (
     <>
 
-        <Container maxWidth='sm'>
+        <Container sx={{ height: '100vh' }}>
             <HeaderSearch />
             <Navbar />
         </Container>

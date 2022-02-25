@@ -165,7 +165,7 @@ const UserHeader = () => {
         handleCreateStoryDialog={handleCreateStoryDialog}
         openStoryDialog={openStoryDialog}
       />
-      <Box sx={{ pb: 7 }}>
+      <Box sx={{ padding: 0 }}>
         <Paper
           sx={{
             position: 'fixed',

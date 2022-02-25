@@ -20,9 +20,9 @@ const ActivityHeader = () => {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            zIndex: 1100,
+            zIndex: 1100
           }}
-          elevation={3}
+          elevation={0}
         >
           <Box
             style={{
