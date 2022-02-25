@@ -39,7 +39,7 @@ const PostsUserOwnerDialog = ({
               <ArrowBackIosNewIcon />
             </IconButton>
             <Box>
-              <Typography sx={{ fontSize: '14px', color: 'gray' }}>
+              <Typography sx={{ fontSize: '14px', color: 'gray', textAlign: 'center' }}>
                 {user.username}
               </Typography>
               <Typography sx={{ fontWeight: 'bold' }} component='div'>

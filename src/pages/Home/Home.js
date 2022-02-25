@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React from 'react';
 import Header from '../../components/utils/Header';
 import { Navbar } from '../../components/utils/Navbar';
 import MediaCard from '../../components/utils/MediaCard';
