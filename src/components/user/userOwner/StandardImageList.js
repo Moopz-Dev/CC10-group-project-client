@@ -15,7 +15,7 @@ const StandardImageList = ({ userPosts }) => {
   return (
     <>
       <MultiNavUserProfile />
-      <Card>
+      <Card sx={{ marginBottom: '29px' }}>
         <ImageList
           sx={{
             width: 390,
