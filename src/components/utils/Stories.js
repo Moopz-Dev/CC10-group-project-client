@@ -1,9 +1,7 @@
-import { Box, Button, Container, FormControl, TextField } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import React from 'react';
 import ReactInstaStories from 'react-insta-stories';
 import CloseIcon from '@mui/icons-material/Close';
-import { useFormControl } from '@mui/material/FormControl';
-import { display } from '@mui/system';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 // import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SendIcon from '@mui/icons-material/Send';
@@ -53,7 +51,7 @@ const Stories = () => {
             justifyContent: 'center',
           }}
         >
-          <FormControl>
+          <form>
             <input
               style={{
                 border: '1px solid white',
@@ -66,7 +64,7 @@ const Stories = () => {
               }}
               placeholder='Send Message'
             />
-          </FormControl>
+          </form>
           <span
             role='button'
             style={{ transform: 'rotate(-45deg)', marginLeft: '20px' }}
