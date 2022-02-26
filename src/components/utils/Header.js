@@ -109,7 +109,7 @@ const Header = () => {
         handleCreateStoryDialog={handleCreateStoryDialog}
         openStoryDialog={openStoryDialog}
       />
-      <Box sx={{ pb: 7 }}>
+      <Box>
         <Paper
           sx={{
             position: 'fixed',

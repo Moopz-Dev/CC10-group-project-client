@@ -25,21 +25,23 @@ const CommentUserOwnerDialog = ({
   items
 }) => {
   return (
-    <div>
+    <>
       <Dialog
         fullScreen
         open={openComment}
         onClose={handleClickOpenComment}
         TransitionComponent={Transition}
       >
-        <AppBar sx={{ position: 'relative' }} color='transparent'>
+        <AppBar sx={{ position: 'relative' }} color='transparent' elevation={0} >
           <Toolbar>
             <Box
               sx={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 width: '400px',
+                boxShadow: 'none'
               }}
+              
             >
               <Box>
                 <IconButton
@@ -150,7 +152,7 @@ const CommentUserOwnerDialog = ({
           </Box>
         </Box>
       </Dialog>
-    </div>
+    </>
   );
 };
 

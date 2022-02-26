@@ -1,11 +1,9 @@
-import { Box, Button, Container, FormControl, TextField } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import React from 'react';
 import ReactInstaStories from 'react-insta-stories';
 import CloseIcon from '@mui/icons-material/Close';
-import { useFormControl } from '@mui/material/FormControl';
-import { display } from '@mui/system';
-// import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+// import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SendIcon from '@mui/icons-material/Send';
 import { useNavigate } from 'react-router-dom';
 import Carousel from 'react-material-ui-carousel';
@@ -14,8 +12,6 @@ const Stories = () => {
   const navigate = useNavigate();
 
   return (
-    // <Container maxWidth="sm" sx={{ display: 'flex', justifyContent: 'center' }}>
-    // <Carousel>
       <Box
         sx={{
           display: 'flex',
@@ -23,53 +19,52 @@ const Stories = () => {
           flexDirection: 'column',
           alignItems: 'center',
         }}
-        maxWidth='sm'
       >
         <Box
           sx={{
-            width: '100%',
+            width: '390px',
             height: '40px',
             display: 'flex',
             justifyContent: 'flex-end',
             position: 'absolute',
             zIndex: 1100,
-            top: '10px',
+            top: '10px'
           }}
         >
           <Button onClick={(e) => navigate('/')}>
-            <CloseIcon sx={{ color: 'white', fontSize: '30px' }} />
+            <CloseIcon sx={{ color: 'white', fontSize: '30px',zIndex: '1100' }} />
           </Button>
         </Box>
         <ReactInstaStories
           stories={stories}
           defaultInterval={1500}
-          width='100vw'
-          height='100vh'
+          width='390px'
+          height='850px'
         />
         <Box
           sx={{
             position: 'absolute',
             zIndex: 1100,
-            // outline: '2px dashed red',
             width: '100%',
             bottom: '10px',
             display: 'flex',
             justifyContent: 'center',
           }}
         >
-          <FormControl>
-            <TextField
-              size='small'
-              sx={{
+          <form>
+            <input
+              style={{
                 border: '1px solid white',
                 textColor: 'white',
                 borderRadius: '50px',
-                width: '250px',
+                width: '245px',
+                height: '40px',
+                padding: '0 10px',
+                background: 'transparent'
               }}
               placeholder='Send Message'
-              // color='inherite'
             />
-          </FormControl>
+          </form>
           <span
             role='button'
             style={{ transform: 'rotate(-45deg)', marginLeft: '20px' }}
@@ -77,13 +72,11 @@ const Stories = () => {
             <SendIcon sx={{ color: 'white', fontSize: '30px' }} />
           </span>
           <Button>
-            <FavoriteBorderIcon sx={{ color: 'white', fontSize: '30px' }} />
+            <FavoriteIcon sx={{ color: 'red', fontSize: '30px' }} />
           </Button>
         </Box>
         <Box></Box>
       </Box>
-    // {/* </Carousel> */}
-    // {/* // </Container> */}
   );
 };
 export default Stories;

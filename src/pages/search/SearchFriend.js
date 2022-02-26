@@ -1,17 +1,14 @@
-import { Container } from '@mui/material'
+import { Box, Container } from '@mui/material'
 import React from 'react'
 import HeaderSearch from '../../components/searchFriend/HeaderSearch'
 import Navbar from '../../components/utils/Navbar'
 
 const SearchFriend = () => {
   return (
-    <>
-
-        <Container maxWidth='sm'>
+    <Box>
             <HeaderSearch />
             <Navbar />
-        </Container>
-    </>
+    </Box>
   )
 }
 

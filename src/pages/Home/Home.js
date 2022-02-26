@@ -1,20 +1,21 @@
-import React, { useEffect, useContext } from "react";
-import Header from "../../components/utils/Header";
-import { Navbar } from "../../components/utils/Navbar";
-import MediaCard from "../../components/utils/MediaCard";
-import SliderStory from "../../components/utils/SliderStory";
-import { Container } from "@mui/material";
+import React from 'react';
+import Header from '../../components/utils/Header';
+import { Navbar } from '../../components/utils/Navbar';
+import MediaCard from '../../components/utils/MediaCard';
+import SliderStory from '../../components/utils/SliderStory';
+import { Box, Container } from '@mui/material';
 
 const Home = () => {
   return (
     <>
-      <Container 
-      sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center',padding: 0 }}>
-        <Header />
+      <Header />
+      <Box
+        sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '50px' }}
+      >
         <SliderStory />
         <MediaCard />
-        <Navbar />
-      </Container>
+      </Box>
+      <Navbar />
     </>
   );
 };

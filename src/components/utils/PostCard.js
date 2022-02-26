@@ -75,7 +75,7 @@ const PostCard = ({ item }) => {
         items={item}
         user={user}
       />
-      <Card sx={{ marginBottom: '5px', width: '390px' }} elevation={1}>
+      <Card sx={{ width: '390px' }} elevation={1}>
         <Box
           sx={{
             padding: '20px ',
