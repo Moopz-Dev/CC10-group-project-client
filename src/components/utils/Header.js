@@ -135,7 +135,14 @@ const Header = () => {
             </Box>
           </Link>
 
-          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginRight: '15px' }}>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginRight: '15px',
+            }}
+          >
             {['bottom'].map((anchor) => (
               <React.Fragment key={anchor}>
                 <IconButton onClick={toggleDrawer(anchor, true)}>
@@ -157,7 +164,9 @@ const Header = () => {
               </IconButton>
             </Link>
             <Link to='/mesenger'>
-              <IconButton><ChatOutlinedIcon /></IconButton>
+              <IconButton>
+                <ChatOutlinedIcon />
+              </IconButton>
             </Link>
           </Box>
         </Paper>
