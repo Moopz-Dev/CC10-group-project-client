@@ -5,15 +5,19 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditIcon from '@mui/icons-material/Edit';
 import { deletePost } from '../../apis/post';
 import EditPostDialog from './EditPostDialog';
+import { UserDataContext } from '../../context/UserDataContext';
 
 
 const MenuTooltip = ({ handleCloseMenu, anchorEl, open, items }) => {
   const [openEditPostDialog, setOpenEditPostDialog] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
+
+  const { fetchGetMePosts } = useContext(UserDataContext)
 
   const handleClickEditPostDialog = () => {
     setOpenEditPostDialog(!openEditPostDialog);
   };
-  console.log(items)
+  // console.log(items)
 
   const fetchDeletePost = async () => {
     try {
@@ -23,8 +27,15 @@ const MenuTooltip = ({ handleCloseMenu, anchorEl, open, items }) => {
       console.log(err)
     }
   }
-  const handleDeleteMyPost = () => {
-    fetchDeletePost();
+  const handleClosDelete = () => {
+    setOpenDelete(!openDelete)
+  }
+
+  const handleDeleteMyPost = async () => {
+    await fetchDeletePost();
+    handleCloseMenu()
+    await fetchGetMePosts();
+
   }
   return (
     <div>

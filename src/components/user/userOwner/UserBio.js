@@ -22,10 +22,6 @@ const UserBio = () => {
     setOpen(false);
   };
 
-  console.log(userPosts)
-  console.log(userPosts.length === 0)
-  console.log(user)
-
   return (
     <Box
       sx={{
@@ -69,10 +65,10 @@ const UserBio = () => {
           >
             <Box sx={{ textAlign: 'center' }}>
               <Typography sx={{ fontWeight: '500' }}>
-                {userPosts.length === 0 ? userPosts.length : userPosts[0].PostMedia.length}
+                {userPosts.length === 0 ? userPosts.length : userPosts.length}
               </Typography>
               <Typography>
-                {userPosts.length === 0 || userPosts[0].PostMedia.length > 1 ? 'Post' : 'Posts' }
+                {userPosts.length === 0 || userPosts.length > 1 ? 'Post' : 'Posts' }
               </Typography>
             </Box>
             <Box sx={{ textAlign: 'center' }}>

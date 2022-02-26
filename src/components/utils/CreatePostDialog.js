@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import AppBar from '@mui/material/AppBar';
@@ -14,6 +14,7 @@ import CarouselPreviewPic from './CarouselPreviewPic';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
 import ClearIcon from '@mui/icons-material/Clear';
+import { UserDataContext } from '../../context/UserDataContext';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction='up' ref={ref} {...props} />;
@@ -22,6 +23,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const CreatePostDialog = ({ handleCreatePostDialog, openDialog }) => {
   const [media, setMedia] = useState([]);
   const [message, setMessage] = useState('');
+
+  const { fetchAllPost, fetchGetMePosts } = useContext(UserDataContext);
 
   const fileUpload = (e) => {
     const files = e.target.files;
@@ -38,9 +41,11 @@ const CreatePostDialog = ({ handleCreatePostDialog, openDialog }) => {
       formData.append('media', media[i]);
     }
     console.log(formData);
-    axios.post('/posts/', formData).then((res) => {
+    axios.post('/posts/', formData).then(async (res) => {
       console.log(res);
       handleCreatePostDialog();
+      await fetchAllPost();
+      await fetchGetMePosts();
     });
   };
 
@@ -120,7 +125,7 @@ const CreatePostDialog = ({ handleCreatePostDialog, openDialog }) => {
                   style={{
                     fontSize: '20px',
                     fontFamily: 'roboto',
-                    color: '#a9aaab'
+                    color: '#a9aaab',
                   }}
                 >
                   <Box

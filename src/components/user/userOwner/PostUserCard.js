@@ -4,6 +4,7 @@ import PostCards from './PostCards';
 
 export default function PostUserCard() {
   const { userPosts } = useContext(UserDataContext);
+  console.log(userPosts);
 
   return (
     <>

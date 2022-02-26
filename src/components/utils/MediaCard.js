@@ -1,24 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { getAllPosts } from '../../apis/post';
+import React, { useContext } from 'react';
+import { UserDataContext } from '../../context/UserDataContext';
 import PostCard from './PostCard';
 
 const MediaCard = () => {
-  const [allPost, setAllPost] = useState([]);
-
-  useEffect(() => {
-    const fetchAllPost = async () => {
-      try {
-        const res = await getAllPosts();
-        const result = res.data;
-
-        setAllPost(result);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchAllPost();
-  }, []);
-
+  const { allPost } = useContext(UserDataContext);
   return (
     <>
       {allPost.map((item) => {
