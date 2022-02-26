@@ -5,79 +5,26 @@ body {
   padding-top: 0;
   background-color: #ffffff;
 }
-/* ::-webkit-scrollbar {
-  display: none;
-} */
 
-.top-text {
+.font {
+  font-size: 25px;
 }
-.containers-res {
-  background-color: rgb(255, 255, 255);
-  margin-top: 20px;
-  padding-top: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.cards-wrap {
   width: 100%;
-  height: 100%;
-  min-width: 380px;
-  min-height: 40vh;
-}
-.containers {
-  background-color: rgb(255, 255, 255);
-  width: 700px;
   display: flex;
+  flex-wrap: wrap;
+  position: relative;
   align-items: center;
   justify-content: center;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  width: 380px;
-  display: flex;
-  object-fit: fill;
-  border: none;
-  overflow: visible;
-}
-
-.cards-wrapper {
-  padding: 30px;
-  width: 80%;
-  align-items: center;
-  justify-content: center;
-  border-style: dashed;
-  border-radius: 20px;
-  border-color: rgb(138, 138, 138);
+  /* background-color: #ff2d2d; */
   text-align: center;
+  min-width: 100px;
+  min-height: 100px;
 }
 
-.cards-wrapper.pointer {
-  cursor: pointer;
-}
-
-.cards-wrapper:hover {
-  border-color: #ff2d2d;
-}
-
-.cards {
-  border-style: dashed;
-  border-color: rgb(255, 255, 255);
-  border-width: 2px;
-  text-align: center;
-  background-color: rgb(255, 255, 255);
-  padding-top: 10px;
-  border-radius: 10px;
-}
-
-.cards.bottom {
-  padding-top: 0;
-  margin-top: 0;
-  background-color: rgb(255, 255, 255);
-  border-style: dashed;
-  padding-bottom: 25px;
-}
 .inputs {
-  width: 250px;
+  /* display: contents; */
+  width: 230px;
   /* height: 10px; */
   border: 2px solid #f0f0f0;
   border-radius: 5px;
@@ -100,65 +47,4 @@ body {
 .discard {
   background-color: #f0f0f0;
   color: black;
-}
-
-@media screen and (max-width: 700px) {
-  .backbtn {
-    display: flex;
-    position: absolute;
-    top: 30px;
-    left: 23px;
-  }
-  .gambar {
-    display: none;
-  }
-
-  .containers {
-    width: 100%;
-    height: 100%;
-    width: 400px;
-    display: flex;
-    object-fit: fill;
-    border: none;
-    overflow: visible;
-  }
-  .cards.top {
-    background-color: rgb(255, 255, 255);
-    width: 100%;
-    height: 100%;
-    padding-bottom: 0;
-    margin-bottom: 0;
-    border: none;
-    overflow: visible;
-  }
-
-  .cards.bottom {
-    padding-top: 0;
-    margin-bottom: 0;
-    background-color: rgb(255, 255, 255);
-    width: 100%;
-    height: 100%;
-    border: none;
-    overflow: visible;
-  }
-  .cards-wrapper {
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-    border: none;
-  }
-  .containers-res {
-    background-color: rgb(255, 255, 255);
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    min-width: 380px;
-    min-height: 40vh;
-    min-width: 50vh;
-    overflow: visible;
-  }
 }

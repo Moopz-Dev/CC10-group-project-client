@@ -1,120 +1,34 @@
-.Arrow-box {
-  display: flex;
-  padding-top: 0;
-  position: relative;
-  padding-bottom: 10px;
-  padding-left: 10px;
+.ce-message-bubble {
+  /* background-color: blueviolet !important; */
+}
+.ce-chat-card {
+  margin: 10px;
 }
 
-.messenger {
-  height: calc(100vh - 90px);
-  display: flex;
-  overflow: hidden;
+.ce-photo-title-container {
+  display: none;
 }
 
-.chatMenu {
-  flex: 3.5;
-  /* background-color: aquamarine; */
+#ce-options-drop-down {
+  display: none;
+}
+.ce-my-message-bubble {
+  margin-right: 15px;
+}
+.ce-chat-card.ce-active-chat-card {
+  /* background-color: #bd6efb !important; */
 }
 
-.chatMenuInput {
-  width: 90%;
-  padding: 10px;
-  /* border: none; */
-  border-radius: 40px;
-  /* border-bottom: 1px; */
+#ce-chat-feed-title-Chatting {
+  display: none;
 }
 
-.chatBox {
-  flex: 5.5;
-  background-color: rgb(255, 255, 255);
-  margin-left: 10px;
-  margin-right: 10px;
+.ce-chat-form-container {
+  display: none;
 }
 
-.chatBoxWrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  overflow: visible;
-}
-
-.chatBoxTop {
-  height: 100%;
-  overflow-y: auto;
-  padding-right: 10px;
-}
-
-.chatBoxBottom {
-  margin-top: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  padding-bottom: 20px;
-}
-
-.messageText {
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-  background-color: aquamarine;
-}
-.messageText.own {
-  background-color: rgb(228, 222, 222);
-  justify-content: end;
-}
-
-.message_from {
-  width: 100%;
-  /* background-color: black; */
-  margin-top: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 5px;
-}
-
-.chatMessageInput {
-  width: 70%;
-  height: 10px;
-  padding: 15px;
-  border-radius: 50px;
-  overflow-y: hidden;
-  margin-right: 10px;
-}
-
-.chatSummitButton {
-  width: 50px;
-  height: 40px;
-  border: none;
-  border-radius: 20px;
-  background-color: rgb(241, 241, 241);
-  color: rgb(0, 0, 0);
-}
-
-.chatOnline {
-  flex: 3;
-}
-.chatMenuWrapper,
-.chatBoxWrapper,
-.chatOnlineWrapper {
-  padding: 10px;
-  height: 100%;
-}
-
-@media screen and (max-width: 750px) {
-  .chatMenu {
-    display: none;
-  }
-  .chatOnline {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 750px) {
-  .Arrow-box {
-    display: none;
+@media screen and (max-width: 575px) {
+  .ce-chat-settings-mobile-option {
+    display: none !important;
   }
 }

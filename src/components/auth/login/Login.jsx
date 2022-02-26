@@ -4,7 +4,6 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import FacebookLoginButton from "../FacebookLoginButton";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
-import { setToken, clearToken, getToken } from "../../../services/localStorage";
 import axios from "../../../config/axios";
 import { ErrorContext } from "../../../context/ErrorContext";
 import Swal from "sweetalert2";
@@ -28,7 +27,13 @@ function Login() {
         password,
       });
       login(usernameOrPhoneNumberOrEmail, password);
-      console.log(res);
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Login Successful",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       navigate("/");
     } catch (err) {
       Swal.fire(err.response.data.message);
