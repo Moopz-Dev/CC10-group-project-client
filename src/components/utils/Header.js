@@ -5,7 +5,7 @@ import PostAddIcon from '@mui/icons-material/PostAdd';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
 import { Paper } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
@@ -16,13 +16,11 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import GridOnOutlinedIcon from '@mui/icons-material/GridOnOutlined';
 import MusicVideoIcon from '@mui/icons-material/MusicVideo';
 import CreatePostDialog from './CreatePostDialog';
-import CreateReels from './CreateReels';
 import CreatReelDialog from '../reelsCom/CreatReelDialog';
 import CreateStoryDialog from '../stories/CreateStoryDialog';
+import IconButton from '@mui/material/IconButton';
 
 const Header = () => {
-  const navigate = useNavigate();
-
   const [state, setState] = useState({
     bottom: false,
   });
@@ -127,7 +125,7 @@ const Header = () => {
           <Link to='/' style={{ textDecoration: 'none', color: 'black' }}>
             <Box
               sx={{
-                marginLeft: '15px',
+                margin: '10px 0 0 15px',
                 alignSelf: 'center',
                 fontFamily: 'cookie',
                 fontSize: '2rem',
@@ -137,15 +135,13 @@ const Header = () => {
             </Box>
           </Link>
 
-          <Box sx={{ width: 250 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginRight: '15px' }}>
             {['bottom'].map((anchor) => (
               <React.Fragment key={anchor}>
-                <BottomNavigationAction
-                  icon={<PostAddIcon />}
-                  onClick={toggleDrawer(anchor, true)}
-                >
-                  {anchor}
-                </BottomNavigationAction>
+                <IconButton onClick={toggleDrawer(anchor, true)}>
+                  <PostAddIcon />
+                  {/* {anchor} */}
+                </IconButton>
                 <Drawer
                   anchor={anchor}
                   open={state[anchor]}
@@ -156,10 +152,12 @@ const Header = () => {
               </React.Fragment>
             ))}
             <Link to='/activities'>
-              <BottomNavigationAction icon={<FavoriteBorderOutlinedIcon />} />
+              <IconButton>
+                <FavoriteBorderOutlinedIcon />
+              </IconButton>
             </Link>
             <Link to='/mesenger'>
-              <BottomNavigationAction icon={<ChatOutlinedIcon />} />
+              <IconButton><ChatOutlinedIcon /></IconButton>
             </Link>
           </Box>
         </Paper>

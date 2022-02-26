@@ -19,11 +19,10 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction='left' ref={ref} {...props} />;
 });
 
-const CommentDialog = ({
+const CommentUserOwnerDialog = ({
   openComment,
   handleClickOpenComment,
-  items,
-  user
+  items
 }) => {
   return (
     <div>
@@ -141,7 +140,7 @@ const CommentDialog = ({
           }}
         >
           <Box component='form' sx={{ display: 'flex', gap: '10px' }}>
-            <Avatar src={user.profileImg} />
+            <Avatar src={items.User.username} />
             <TextField
               placeholder='add acomment as username1'
               size='small'
@@ -155,4 +154,4 @@ const CommentDialog = ({
   );
 };
 
-export default CommentDialog;
+export default CommentUserOwnerDialog;

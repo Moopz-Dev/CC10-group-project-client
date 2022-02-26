@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { getAllPosts } from '../../apis/post';
 import PostCard from './PostCard';
 
-
 const MediaCard = () => {
   const [allPost, setAllPost] = useState([]);
 
@@ -11,9 +10,8 @@ const MediaCard = () => {
       try {
         const res = await getAllPosts();
         const result = res.data;
-        
+
         setAllPost(result);
-        console.log(result)
       } catch (err) {
         console.log(err);
       }
@@ -26,7 +24,7 @@ const MediaCard = () => {
       {allPost.map((item) => {
         return (
           <>
-          <PostCard item={item} />
+            <PostCard item={item} />
           </>
         );
       })}
