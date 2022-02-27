@@ -68,7 +68,7 @@ const UserBio = () => {
                 {userPosts.length === 0 ? userPosts.length : userPosts.length}
               </Typography>
               <Typography>
-                {userPosts.length === 0 || userPosts.length > 1 ? 'Post' : 'Posts' }
+                {userPosts.length === 0 || userPosts.length > 1 ? 'Posts' : 'Posts' }
               </Typography>
             </Box>
             <Box sx={{ textAlign: 'center' }}>
@@ -118,6 +118,8 @@ const UserBio = () => {
             <UserOwnerSlideDialog
               open={open}
               handleCloseDialog={handleCloseDialog}
+              user={user}
+              userPosts={userPosts}
             />
             <SettingsIcon
               sx={{

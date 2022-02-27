@@ -2,10 +2,13 @@ import React from 'react';
 import { Box } from '@mui/system';
 import Typography from '@mui/material/Typography';
 import HttpsOutlinedIcon from '@mui/icons-material/HttpsOutlined';
+import { Card } from '@mui/material';
 
 const PrivateAccount = () => {
   return (
     <>
+    <Card sx={{ width: '390px' }}>
+
       <Box
         sx={{
           height: 550,
@@ -29,6 +32,7 @@ const PrivateAccount = () => {
           </Typography>
         </Box>
       </Box>
+    </Card>
     </>
   );
 };

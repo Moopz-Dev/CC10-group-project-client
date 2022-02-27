@@ -42,7 +42,6 @@ const UserDataContextProvider = ({ children }) => {
       try {
         const res = await getMyPosts();
         const result = res.data;
-        console.log(result);
 
         setUserPosts(result);
       } catch (err) {
@@ -61,21 +60,27 @@ const UserDataContextProvider = ({ children }) => {
     try {
       const res = await getAllPosts();
       const result = res.data;
-      console.log(result)
 
       setAllPost(result);
     } catch (err) {
       console.log(err);
     }
   };
-  
+
   useEffect(() => {
     fetchAllPost();
   }, []);
 
   return (
     <UserDataContext.Provider
-      value={{ followerCount, followingCount, userPosts, fetchGetMePosts, allPost, fetchAllPost }}
+      value={{
+        followerCount,
+        followingCount,
+        userPosts,
+        fetchGetMePosts,
+        allPost,
+        fetchAllPost,
+      }}
     >
       {children}
     </UserDataContext.Provider>

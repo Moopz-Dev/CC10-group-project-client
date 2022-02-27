@@ -7,6 +7,15 @@
   border-radius: 3px;
   font-weight: bold;
 }
+.btn-following {
+  color: #bd6efb;
+  background-color: transparent;
+  width: 160px;
+  height: 30px;
+  border: 1px solid #bd6efb;
+  border-radius: 3px;
+  font-weight: bold;
+}
 .btn-follow-private {
   color: #ffffff;
   background-color: #bd6efb;

@@ -7,7 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
-import { Box, Container, Divider } from '@mui/material';
+import { Box, Card, Container, Divider } from '@mui/material';
 import '../../styles/utils/createPostDialog.css';
 import axios from '../../config/axios';
 import CarouselPreviewPic from './CarouselPreviewPic';
@@ -58,7 +58,7 @@ const CreatePostDialog = ({ handleCreatePostDialog, openDialog }) => {
       <Container maxWidth='sm'>
         <Button variant='outlined' onClick={handleCreatePostDialog}></Button>
         <Dialog
-          fullScreen
+          // fullScreen
           maxWidth='sm'
           open={openDialog}
           onClose={handleCreatePostDialog}
@@ -93,7 +93,8 @@ const CreatePostDialog = ({ handleCreatePostDialog, openDialog }) => {
           </AppBar>
           <Box
             sx={{
-              height: '400px',
+              height: '350px',
+              width: '326px',
               display: 'flex',
               flexDirection: 'column-reverse',
               alignItems: 'center',
@@ -146,8 +147,8 @@ const CreatePostDialog = ({ handleCreatePostDialog, openDialog }) => {
                     <Box
                       sx={{
                         position: 'absolute',
-                        right: '140px',
-                        top: '225px',
+                        right: '100px',
+                        top: '200px',
                         zIndex: 1100,
                       }}
                     >
@@ -208,7 +209,11 @@ const CreatePostDialog = ({ handleCreatePostDialog, openDialog }) => {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder='Write a caption...'
-                style={{ border: 'none', fontSize: '18px' }}
+                style={{
+                  border: 'none',
+                  fontSize: '18px',
+                  paddingLeft: '30px',
+                }}
               />
             </div>
           </Box>

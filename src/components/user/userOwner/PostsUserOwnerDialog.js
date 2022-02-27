@@ -49,12 +49,10 @@ const PostsUserOwnerDialog = ({
             <Box sx={{ width: '40px' }}></Box>
           </Toolbar>
         </AppBar>
-        {/* <Box sx={{ display: 'flex', justifyContent: 'center', outline: '2px dashed red' }}> */}
         <Box sx={{ overflowY: 'scroll' }}>
           <PostUserCard />
         </Box>
         <Navbar />
-        {/* </Box> */}
       </Dialog>
     </div>
   );
