@@ -22,6 +22,7 @@ export const updateProfile = async (
 		username,
 		email,
 		phoneNumber,
+		publicStatus,
 	});
 };
 
