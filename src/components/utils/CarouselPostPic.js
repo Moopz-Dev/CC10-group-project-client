@@ -3,7 +3,6 @@ import { CardMedia } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 
 const CarouselPostPic = ({ PostMedia }) => {
-  // console.log(PostMedia)
   return (
     <Carousel autoPlay={false} animation="slide" sx={{ color: '#be6efb86' }}>
       {PostMedia.map((item, i) => (

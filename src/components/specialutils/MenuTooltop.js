@@ -7,36 +7,30 @@ import { deletePost } from '../../apis/post';
 import EditPostDialog from './EditPostDialog';
 import { UserDataContext } from '../../context/UserDataContext';
 
-
 const MenuTooltip = ({ handleCloseMenu, anchorEl, open, items }) => {
   const [openEditPostDialog, setOpenEditPostDialog] = useState(false);
-  const [openDelete, setOpenDelete] = useState(false);
 
-  const { fetchGetMePosts } = useContext(UserDataContext)
+  console.log(items)
+  const { fetchGetMePosts } = useContext(UserDataContext);
 
   const handleClickEditPostDialog = () => {
     setOpenEditPostDialog(!openEditPostDialog);
   };
-  // console.log(items)
 
   const fetchDeletePost = async () => {
     try {
-      const res = await deletePost(items.id)
-      console.log(res)
+      const res = await deletePost(items.id);
+      console.log(res);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
-  const handleClosDelete = () => {
-    setOpenDelete(!openDelete)
-  }
+  };
 
   const handleDeleteMyPost = async () => {
     await fetchDeletePost();
-    handleCloseMenu()
+    handleCloseMenu();
     await fetchGetMePosts();
-
-  }
+  };
   return (
     <div>
       <Menu
@@ -48,10 +42,19 @@ const MenuTooltip = ({ handleCloseMenu, anchorEl, open, items }) => {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClickEditPostDialog}><EditIcon /> Edit</MenuItem>
-        <MenuItem onClick={handleDeleteMyPost} sx={{ color: 'red' }}><DeleteOutlineIcon sx={{ color: 'red' }} /> Delete</MenuItem>
+        <MenuItem onClick={handleClickEditPostDialog}>
+          <EditIcon /> Edit
+        </MenuItem>
+        <MenuItem onClick={handleDeleteMyPost} sx={{ color: 'red' }}>
+          <DeleteOutlineIcon sx={{ color: 'red' }} /> Delete
+        </MenuItem>
       </Menu>
-      <EditPostDialog handleClickEditPostDialog={handleClickEditPostDialog} openEditPostDialog={openEditPostDialog} />
+      <EditPostDialog
+        handleClickEditPostDialog={handleClickEditPostDialog}
+        openEditPostDialog={openEditPostDialog}
+        items={items}
+        fetchGetMePosts={fetchGetMePosts}
+      />
     </div>
   );
 };

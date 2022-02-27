@@ -1,12 +1,10 @@
 import { Box, Button } from '@mui/material';
-import React from 'react';
+import React, { useContext } from 'react';
 import ReactInstaStories from 'react-insta-stories';
 import CloseIcon from '@mui/icons-material/Close';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-// import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SendIcon from '@mui/icons-material/Send';
 import { useNavigate } from 'react-router-dom';
-import Carousel from 'react-material-ui-carousel';
 
 const Stories = () => {
   const navigate = useNavigate();
@@ -86,7 +84,7 @@ const stories = [
     url: 'https://picsum.photos/1080/1920',
     // seeMore: <SeeMore />,
     header: {
-      heading: 'Mohit Karekar',
+      heading: 'natthabamm',
       subheading: 'Posted 5h ago',
       profileImage: 'https://picsum.photos/1000/1000',
     },
@@ -94,7 +92,7 @@ const stories = [
   {
     url: 'https://fsa.zobj.net/crop.php?r=dyJ08vhfPsUL3UkJ2aFaLo1LK5lhjA_5o6qEmWe7CW6P4bdk5Se2tYqxc8M3tcgYCwKp0IAyf0cmw9yCmOviFYb5JteeZgYClrug_bvSGgQxKGEUjH9H3s7PS9fQa3rpK3DN3nx-qA-mf6XN',
     header: {
-      heading: 'Mohit Karekar',
+      heading: 'natthabamm',
       subheading: 'Posted 32m ago',
       profileImage: 'https://picsum.photos/1080/1920',
     },
@@ -102,7 +100,7 @@ const stories = [
   {
     url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
     header: {
-      heading: 'mohitk05/react-insta-stories',
+      heading: 'natthabamm',
       subheading: 'Posted 32m ago',
       profileImage:
         'https://avatars0.githubusercontent.com/u/24852829?s=400&v=4',

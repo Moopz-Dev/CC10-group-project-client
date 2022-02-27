@@ -11,7 +11,6 @@ import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { AuthContext } from '../../../context/AuthContext';
 import { Box } from '@mui/material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import CarouselUserOwnPost from './CarouselUserOwnPost';
@@ -22,6 +21,8 @@ import { likePost } from '../../../apis/like';
 
 const PostCards = ({ items }) => {
   const { user } = useContext(AuthContext);
+
+  console.log(items);
 
   const isUserLikedObj = items.PostLikes.find((el) => el.userId === user.id);
   const chechUserLiked = typeof isUserLikedObj === 'object' ? true : false;
@@ -45,12 +46,12 @@ const PostCards = ({ items }) => {
 
   const handleClickLike = async () => {
     try {
-      const res = await likePost(items.id);
+      await likePost(items.id);
     } catch (err) {
       console.log(err);
     }
   };
-//   console.log(items);
+
   const [anchorEl, setAnchorEl] = useState(null);
 
   const open = Boolean(anchorEl);
@@ -99,10 +100,10 @@ const PostCards = ({ items }) => {
           }
         />
         <MenuTooltip
-            handleCloseMenu={handleCloseMenu}
-            open={open}
-            anchorEl={anchorEl}
-            items={items}
+          handleCloseMenu={handleCloseMenu}
+          open={open}
+          anchorEl={anchorEl}
+          items={items}
         />
         {items.PostMedia.length >= 2 ? (
           <CarouselUserOwnPost PostMedia={items.PostMedia} />
@@ -115,9 +116,7 @@ const PostCards = ({ items }) => {
           />
         )}
         <CardActions sx={{ height: '20px' }}>
-          <IconButton onClick={handleClickLiked}>
-            {Icon}
-          </IconButton>
+          <IconButton onClick={handleClickLiked}>{Icon}</IconButton>
           <IconButton onClick={handleClickOpenComment}>
             <ChatBubbleOutlineIcon sx={{ fontSize: '25' }} />
           </IconButton>

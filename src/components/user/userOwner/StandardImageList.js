@@ -12,10 +12,12 @@ const StandardImageList = ({ userPosts }) => {
     setOpenPostUserDialog(!openPostUserDialog);
   };
 
+  console.log(userPosts);
+
   return (
     <>
       <MultiNavUserProfile />
-      <Card sx={{ marginBottom: '29px' }}>
+      <Card sx={{ marginBottom: '29px', height: '100vh' }}>
         <ImageList
           sx={{
             width: 390,
@@ -29,14 +31,24 @@ const StandardImageList = ({ userPosts }) => {
         >
           {userPosts.map((item) => (
             <ImageListItem key={item.PostMedia[0].media}>
-              <img
-                src={`${item.PostMedia[0].media}?w=140&h=140&fit=crop&auto=format`}
-                srcSet={`${item.PostMedia[0].media}?w=140&h=140&fit=crop&auto=format&dpr=2 2x`}
-                alt=''
-                height={140}
-                onClick={handleClickOpenPostUserDialog}
-                style={{ overflow: 'hidden' }}
-              />
+              {item.PostMedia[0].type === 'img' ? (
+                <img
+                  src={`${item.PostMedia[0].media}?w=140&h=140&fit=crop&auto=format`}
+                  srcSet={`${item.PostMedia[0].media}?w=140&h=140&fit=crop&auto=format&dpr=2 2x`}
+                  alt=''
+                  height={140}
+                  onClick={handleClickOpenPostUserDialog}
+                  style={{ overflow: 'hidden' }}
+                />
+              ) : (
+                <video 
+                  height={160} 
+                  controls
+                  onClick={handleClickOpenPostUserDialog}
+                >
+                  <source src={item.PostMedia[0].media} type='video/mp4' />
+                </video>
+              )}
             </ImageListItem>
           ))}
         </ImageList>

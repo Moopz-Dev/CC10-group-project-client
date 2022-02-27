@@ -1,24 +1,53 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Avatar,
   Box,
   CardMedia,
-  FormControl,
-  Paper,
   TextField,
+  Paper
 } from '@mui/material';
 import Dialog from '@mui/material/Dialog';
 import AppBar from '@mui/material/AppBar';
 import Typography from '@mui/material/Typography';
 import Slide from '@mui/material/Slide';
-import test1 from '../../images/posts/test01.jpg';
-import pro1 from '../../images/profiles/pro1.jpg';
+import { updatePost } from '../../apis/post'; 
+import { AuthContext } from '../../context/AuthContext';
+import Carousel from 'react-material-ui-carousel';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction='left' ref={ref} {...props} />;
 });
 
-const EditPostDialog = ({ openEditPostDialog, handleClickEditPostDialog }) => {
+const EditPostDialog = ({
+  openEditPostDialog,
+  handleClickEditPostDialog,
+  items,
+  fetchGetMePosts
+}) => {
+
+  const { user } = useContext(AuthContext);
+
+  const [message, setMessage] = useState();
+
+  const fetchUpdateUserPost = async () => {
+    try {
+      const res = await updatePost(
+        items.id, 
+        message
+      );
+      console.log(res)
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+
+  const handleSubmitEditMessageForm = async e => {
+    await fetchUpdateUserPost();
+    handleClickEditPostDialog();
+    await fetchGetMePosts();
+  }
+
   return (
     <div>
       <Dialog
@@ -74,13 +103,12 @@ const EditPostDialog = ({ openEditPostDialog, handleClickEditPostDialog }) => {
                   width: '80px',
                   height: '50px',
                   display: 'flex',
-                  display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}
                 component='div'
                 role='button'
-                onClick={handleClickEditPostDialog}
+                onClick={handleSubmitEditMessageForm}
               >
                 <Typography sx={{ fontSize: '18px' }}>Done</Typography>
               </Box>
@@ -104,27 +132,39 @@ const EditPostDialog = ({ openEditPostDialog, handleClickEditPostDialog }) => {
               alignItems: 'center',
             }}
           >
-            <Avatar alt='' src={pro1} sx={{ width: '50px', height: '50px' }} />
+            <Avatar alt='' src={user.profileImg} sx={{ width: '50px', height: '50px' }} />
           </Box>
           <Box sx={{ height: '60px', width: '250px' }}>
             <Typography sx={{ fontWeight: '500', color: 'gray' }}>
-              username
+              {user.username}
             </Typography>
             <Typography sx={{ color: 'gray' }}>Add location...</Typography>
           </Box>
         </Box>
         <Box>
-          <CardMedia component='img' src={test1} alt='' height={400} />
+          {items.PostMedia.length < 1 ? 
+          
+          <CardMedia component={items.PostMedia[0].type} src={items.PostMedia[0].media} alt='' height={400} />
+          :
+          <Carousel autoPlay={false} animation="slide" sx={{ color: '#be6efb86' }}>
+            <CardMedia 
+              component={items.PostMedia[0].type}
+              image={items.PostMedia[0].media}
+              alt=''
+              height='400'
+              width='350'
+            />
+          </Carousel>
+        }
         </Box>
         <Box sx={{ textAlign: 'center' }}>
-          <FormControl sx={{ width: '390px' }}>
             <TextField
               placeholder='edit caption...'
-              sx={{}}
               fullWidth
+              value={message}
               ariant='outlined'
+              onChange={e => setMessage(e.target.value)}
             />
-          </FormControl>
         </Box>
       </Dialog>
     </div>

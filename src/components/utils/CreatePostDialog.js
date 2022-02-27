@@ -58,7 +58,6 @@ const CreatePostDialog = ({ handleCreatePostDialog, openDialog }) => {
       <Container maxWidth='sm'>
         <Button variant='outlined' onClick={handleCreatePostDialog}></Button>
         <Dialog
-          // fullScreen
           maxWidth='sm'
           open={openDialog}
           onClose={handleCreatePostDialog}

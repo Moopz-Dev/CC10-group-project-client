@@ -17,7 +17,7 @@ const SliderStory = () => {
                 <Link to='/story'>
                   <Avatar sx={{ width: 50, height: 50 }} src={user1} />
                 </Link>
-                <button className='btn-add-story'>+</button>
+                {/* <button className='btn-add-story'>+</button> */}
                 <div className='username'>Your story</div>
               </div>
             </li>
@@ -33,7 +33,7 @@ const SliderStory = () => {
 
             <li>
               <div className='outer-layer'>
-                <Link to=''>
+                <Link to='/story'>
                   <Avatar sx={{ width: 50, height: 50 }} src={user3} />
                 </Link>
                 <div className='username-f'>username2</div>
@@ -42,7 +42,7 @@ const SliderStory = () => {
 
             <li>
               <div className='outer-layer'>
-                <Link to=''>
+                <Link to='/story'>
                   <Avatar sx={{ width: 50, height: 50 }} />
                 </Link>
                 <div className='username-f'>username3</div>
@@ -50,7 +50,7 @@ const SliderStory = () => {
             </li>
             <li>
               <div className='outer-layer'>
-                <Link to=''>
+                <Link to='story'>
                   <Avatar sx={{ width: 50, height: 50 }} />
                 </Link>
                 <div className='username-f'>username4</div>

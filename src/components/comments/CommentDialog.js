@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { Box, typography } from '@mui/system';
+import React from 'react';
+import { Box } from '@mui/system';
 import Dialog from '@mui/material/Dialog';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
@@ -9,11 +9,11 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import Slide from '@mui/material/Slide';
-import { Button, CardHeader, FormControl, Input } from '@mui/material';
+import { Button, CardHeader } from '@mui/material';
 import { Avatar } from '@mui/material';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import TextField from '@mui/material/TextField';
+import shortTimeSince from '../../services/shortTimeSince';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction='left' ref={ref} {...props} />;
@@ -23,7 +23,7 @@ const CommentDialog = ({
   openComment,
   handleClickOpenComment,
   items,
-  user
+  user,
 }) => {
   return (
     <div>
@@ -67,66 +67,44 @@ const CommentDialog = ({
         </AppBar>
         <List>
           <CardHeader
-            avatar={
-              <Avatar sx={{ bgcolor: 'red[500]' }} aria-label='recipe'>
-                R
-              </Avatar>
-            }
+            avatar={<Avatar src={items.User.profileImg} />}
             title={
               <typography>
-                <span style={{ fontWeight: 'bold' }}>username</span>&nbsp;
-                &nbsp;
-                titititititititititiititititititดกิกดเกดเกดเกดเกดเititititi
+                <span style={{ fontWeight: 'bold' }}>
+                  {items.User.username}
+                </span>
+                &nbsp; &nbsp;
+                {items.message}
               </typography>
             }
-            subheader='2h'
+            subheader={shortTimeSince(new Date(items.createdAt))}
             sx={{ display: 'flex', alignItems: 'flex-start' }}
           />
           <Divider />
           {/* comment from friend */}
-          <CardHeader
-            avatar={
-              <Avatar sx={{ bgcolor: 'red[500]' }} aria-label='recipe'>
-                R
-              </Avatar>
-            }
-            title={
-              <typography>
-                <span style={{ fontWeight: 'bold' }}>username</span>&nbsp;
-                &nbsp; boyu
-              </typography>
-            }
-            subheader='2h'
-            sx={{ display: 'flex', alignItems: 'flex-start' }}
-            action={
-              <Button sx={{ color: 'black' }}>
-                {/* <FavoriteBorderIcon sx={{ fontSize: '16px' }} /> */}
-                <FavoriteIcon sx={{ fontSize: '16px', color: 'red' }} />
-              </Button>
-            }
-          />
-          {/* mock */}
-          <CardHeader
-            avatar={
-              <Avatar sx={{ bgcolor: 'red[500]' }} aria-label='recipe'>
-                R
-              </Avatar>
-            }
-            title={
-              <typography>
-                <span style={{ fontWeight: 'bold' }}>username</span>&nbsp;
-                &nbsp; boyu
-              </typography>
-            }
-            subheader='2h'
-            sx={{ display: 'flex', alignItems: 'flex-start' }}
-            action={
-              <Button sx={{ color: 'black' }}>
-                {/* <FavoriteBorderIcon sx={{ fontSize: '16px' }} /> */}
-                <FavoriteIcon sx={{ fontSize: '16px', color: 'red' }} />
-              </Button>
-            }
-          />
+          {items.PostComments.map((el) => {
+            return (
+              <CardHeader
+                avatar={<Avatar src={el.User.profileImg} />}
+                title={
+                  <typography>
+                    <span style={{ fontWeight: 'bold' }}>
+                      {el.User.username}
+                    </span>
+                    &nbsp; &nbsp; {el.message}
+                  </typography>
+                }
+                subheader={shortTimeSince(new Date(el.createdAt))}
+                sx={{ display: 'flex', alignItems: 'flex-start' }}
+                action={
+                  <Button sx={{ color: 'black' }}>
+                    {/* <FavoriteBorderIcon sx={{ fontSize: '16px' }} /> */}
+                    <FavoriteIcon sx={{ fontSize: '16px', color: 'red' }} />
+                  </Button>
+                }
+              />
+            );
+          })}
         </List>
         {/* form comment */}
         <Box

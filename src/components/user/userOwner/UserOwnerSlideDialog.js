@@ -8,9 +8,6 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { forwardRef } from 'react';
 import { Avatar, Box, ListItem } from '@mui/material';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Switch from '@mui/material/Switch';
 import axios from '../../../config/axios';
 import { AuthContext } from '../../../context/AuthContext';
 import { updateProfile } from '../../../apis/user';
@@ -29,6 +26,7 @@ const UserOwnerSlideDialog = ({ open, handleCloseDialog }) => {
   const [username, setUsername] = useState(user.username);
   const [publicStatus, setPublicStatus] = useState(user.publicStatus);
 
+  console.log(publicStatus);
 
   const fileUpload = (e) => {
     const file = e.target.files[0];
@@ -71,7 +69,6 @@ const UserOwnerSlideDialog = ({ open, handleCloseDialog }) => {
   };
 
   const handleSubmitUpdateUserInfo = (e) => {
-    // e.preventDefualt();
     updateUserInfo();
     handleCloseDialog();
   };
@@ -102,7 +99,7 @@ const UserOwnerSlideDialog = ({ open, handleCloseDialog }) => {
               sx={{ height: '70px', width: '70px' }}
               src={
                 (media && URL.createObjectURL(media)) ||
-                (user && user.profilePic)
+                (user && user.profileImg)
               }
             />
             <button
@@ -135,10 +132,10 @@ const UserOwnerSlideDialog = ({ open, handleCloseDialog }) => {
                 fontSize: '14px',
                 padding: '5px',
                 fontWeight: 'bold',
-                // display: `${FormData ? 'none' : 'block' }`
+                display: `${FormData ? 'block' : 'none'}`,
                 // `${FormData ? (display: 'none') : ''}`
               }}
-            />
+            ></input>
             {/* <typography sx={{ fontSize: '8px' }}>Change profile photo</typography> */}
           </Box>
           <DialogContentText id='alert-dialog-slide-description'>
@@ -186,14 +183,30 @@ const UserOwnerSlideDialog = ({ open, handleCloseDialog }) => {
                 </ListItem>
                 <ListItem sx={{ color: 'black' }}>
                   <label>Privacy</label>
-                  <FormGroup sx={{ marginLeft: '15px' }}>
+                  <input
+                    type='radio'
+                    checked={publicStatus === 'PRIVATE'}
+                    value='PRIVATE'
+                    onClick={(e) => setPublicStatus('PRIVATE')}
+                  />
+                  <label for='private'>Private</label>
+                  <input
+                    type='radio'
+                    checked={publicStatus === 'PUBLIC'}
+                    value='PUBLIC'
+                    onClick={(e) => setPublicStatus('PUBLIC')}
+                  />
+                  <label for='public'>Public</label>
+
+                  {/* <FormGroup sx={{ marginLeft: '15px' }}>
                     <FormControlLabel
-                      control={<Switch defaultChecked color='secondary' />}
+                      control={<Switch  color='secondary' />}
                       label='private'
                       value={publicStatus}
-                      onChange={(e) => setPublicStatus('Public')}
+                      defaultValue='PRIVATE'
+                      onChange={(e) => setPublicStatus('PUBLIC')}
                     />
-                  </FormGroup>
+                  </FormGroup> */}
                 </ListItem>
               </Box>
             </form>

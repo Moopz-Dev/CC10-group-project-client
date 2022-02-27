@@ -43,7 +43,7 @@ const PostCard = ({ item }) => {
 
   const handleClickLike = async () => {
     try {
-      const res = await likePost(item.id);
+      await likePost(item.id);
     } catch (err) {
       console.log(err);
     }
@@ -110,6 +110,7 @@ const PostCard = ({ item }) => {
           handleCloseMenu={handleCloseMenu}
           open={open}
           anchorEl={anchorEl}
+          items={item}
         />
         {item.PostMedia.length >= 2 ? (
           <CarouselPostPic PostMedia={item.PostMedia} />
