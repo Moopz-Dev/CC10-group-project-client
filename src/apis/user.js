@@ -14,7 +14,8 @@ export const updateProfile = async (
 	bio,
 	username,
 	email,
-	phoneNumber
+	phoneNumber,
+	publicStatus
 ) => {
 	return await axios.patch("users/" + id, {
 		name,
@@ -22,6 +23,7 @@ export const updateProfile = async (
 		username,
 		email,
 		phoneNumber,
+		publicStatus
 	});
 };
 

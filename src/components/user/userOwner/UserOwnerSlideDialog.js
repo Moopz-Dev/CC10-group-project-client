@@ -21,13 +21,14 @@ const Transition = forwardRef(function Transition(props, ref) {
 
 const UserOwnerSlideDialog = ({ open, handleCloseDialog }) => {
   const { user } = useContext(AuthContext);
-  console.log(user)
+  console.log(user);
 
   const [media, setMedia] = useState('');
   const [name, setName] = useState(user.name);
   const [bio, setBio] = useState(user.bio);
   const [username, setUsername] = useState(user.username);
-  const [publicStatus, setPublicStatus] = useState(user.publicStatus)
+  const [publicStatus, setPublicStatus] = useState(user.publicStatus);
+
 
   const fileUpload = (e) => {
     const file = e.target.files[0];
@@ -52,14 +53,29 @@ const UserOwnerSlideDialog = ({ open, handleCloseDialog }) => {
     });
   };
 
-  const updateInfo = async () => {
+  const updateUserInfo = async () => {
     try {
-      const res = await updateProfile(user.id);
+      const res = await updateProfile(
+        user.id,
+        name,
+        bio,
+        username,
+        user.email,
+        user.phoneNumber,
+        publicStatus
+      );
       console.log(res.data);
     } catch (err) {
       console.log(err);
     }
   };
+
+  const handleSubmitUpdateUserInfo = (e) => {
+    // e.preventDefualt();
+    updateUserInfo();
+    handleCloseDialog();
+  };
+
   return (
     <div>
       <Dialog
@@ -72,61 +88,61 @@ const UserOwnerSlideDialog = ({ open, handleCloseDialog }) => {
         <DialogTitle sx={{ textAlign: 'center' }}>
           {user.profilePic}
         </DialogTitle>
-        <form>
-          <DialogContent sx={{ width: '300px', height: '300px' }}>
-            <Box
-              sx={{
-                width: '300px',
-                height: '100px',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
+        <DialogContent sx={{ width: '300px', height: '350px' }}>
+          <Box
+            sx={{
+              width: '300px',
+              height: '100px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <Avatar
+              sx={{ height: '70px', width: '70px' }}
+              src={
+                (media && URL.createObjectURL(media)) ||
+                (user && user.profilePic)
+              }
+            />
+            <button
+              type='button'
+              style={{
+                display: `${media ? '' : 'none'}`,
+                borderRadius: '50px',
+                width: '25px',
+                height: '25px',
+                position: 'absolute',
+                right: '135px',
+                textAlign: 'center',
+                background: 'white',
+                border: '1px solid black',
               }}
+              onClick={handleCancelMedia}
             >
-              <Avatar
-                sx={{ height: '70px', width: '70px' }}
-                src={
-                  (media && URL.createObjectURL(media)) ||
-                  (user && user.profilePic)
-                }
-              />
-              <button
-                type='button'
-                style={{
-                  display: `${media ? '' : 'none'}`,
-                  borderRadius: '50px',
-                  width: '25px',
-                  height: '25px',
-                  position: 'absolute',
-                  right: '135px',
-                  textAlign: 'center',
-                  background: 'white',
-                  border: '1px solid black',
-                }}
-                onClick={handleCancelMedia}
-              >
-                {' '}
-                X{' '}
-              </button>
+              {' '}
+              X{' '}
+            </button>
 
-              {/* input profile */}
-              <input
-                type='file'
-                accept='image/*'
-                placeholder='select video from device'
-                onChange={fileUpload}
-                style={{
-                  color: '#bd6efb',
-                  fontSize: '14px',
-                  padding: '5px',
-                  fontWeight: 'bold',
-                  // display: `${FormData ? 'none' : 'block' }`
-                  // `${FormData ? (display: 'none') : ''}`
-                }}
-              />
-              {/* <typography sx={{ fontSize: '8px' }}>Change profile photo</typography> */}
-            </Box>
-            <DialogContentText id='alert-dialog-slide-description'>
+            {/* input profile */}
+            <input
+              type='file'
+              accept='image/*'
+              placeholder='select video from device'
+              onChange={fileUpload}
+              style={{
+                color: '#bd6efb',
+                fontSize: '14px',
+                padding: '5px',
+                fontWeight: 'bold',
+                // display: `${FormData ? 'none' : 'block' }`
+                // `${FormData ? (display: 'none') : ''}`
+              }}
+            />
+            {/* <typography sx={{ fontSize: '8px' }}>Change profile photo</typography> */}
+          </Box>
+          <DialogContentText id='alert-dialog-slide-description'>
+            <form onSubmit={handleSubmitUpdateUserInfo}>
               <Box sx={{ width: '100px' }}>
                 <ListItem sx={{ color: 'black' }}>
                   <label>Name</label>
@@ -137,6 +153,8 @@ const UserOwnerSlideDialog = ({ open, handleCloseDialog }) => {
                       border: 'none',
                       borderBottom: '1px solid gray',
                     }}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                   ></input>
                 </ListItem>
                 <ListItem sx={{ color: 'black' }}>
@@ -148,18 +166,23 @@ const UserOwnerSlideDialog = ({ open, handleCloseDialog }) => {
                       border: 'none',
                       borderBottom: '1px solid gray',
                     }}
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                   ></input>
                 </ListItem>
-                <ListItem sx={{ color: 'black' }}>
+                <ListItem sx={{ color: 'black', width: '280px' }}>
                   <label>Bio</label>
-                  <input
+                  <textarea
                     type='text'
                     style={{
                       marginLeft: '55px',
                       border: 'none',
                       borderBottom: '1px solid gray',
                     }}
-                  ></input>
+                    cols='30'
+                    value={bio}
+                    onChange={(e) => setBio(e.target.value)}
+                  ></textarea>
                 </ListItem>
                 <ListItem sx={{ color: 'black' }}>
                   <label>Privacy</label>
@@ -167,21 +190,26 @@ const UserOwnerSlideDialog = ({ open, handleCloseDialog }) => {
                     <FormControlLabel
                       control={<Switch defaultChecked color='secondary' />}
                       label='private'
+                      value={publicStatus}
+                      onChange={(e) => setPublicStatus('Public')}
                     />
                   </FormGroup>
                 </ListItem>
               </Box>
-            </DialogContentText>
-            <DialogActions>
-              <Button onClick={handleCloseDialog} sx={{ color: 'gray' }}>
-                Cancle
-              </Button>
-              <Button onClick={handleCloseDialog} sx={{ color: '#bd6efb' }}>
-                Done
-              </Button>
-            </DialogActions>
-          </DialogContent>
-        </form>
+            </form>
+          </DialogContentText>
+          <DialogActions>
+            <Button onClick={handleCloseDialog} sx={{ color: 'gray' }}>
+              Cancle
+            </Button>
+            <Button
+              onClick={handleSubmitUpdateUserInfo}
+              sx={{ color: '#bd6efb' }}
+            >
+              Done
+            </Button>
+          </DialogActions>
+        </DialogContent>
       </Dialog>
     </div>
   );
