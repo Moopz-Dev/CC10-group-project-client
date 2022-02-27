@@ -22,8 +22,6 @@ import { likePost } from '../../../apis/like';
 const PostCards = ({ items }) => {
   const { user } = useContext(AuthContext);
 
-  console.log(items);
-
   const isUserLikedObj = items.PostLikes.find((el) => el.userId === user.id);
   const chechUserLiked = typeof isUserLikedObj === 'object' ? true : false;
 
@@ -78,7 +76,13 @@ const PostCards = ({ items }) => {
         items={items}
         user={user}
       />
-      <Card sx={{ width: '390px' }}>
+      <Card
+        sx={{
+          width: '390px',
+          height: 'auto',
+          border: '1px solid lightgray',
+        }}
+      >
         <CardHeader
           avatar={<Avatar src={items.User.profileImg} />}
           action={

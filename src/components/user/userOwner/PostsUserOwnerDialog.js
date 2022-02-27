@@ -49,7 +49,7 @@ const PostsUserOwnerDialog = ({
             <Box sx={{ width: '40px' }}></Box>
           </Toolbar>
         </AppBar>
-        <Box sx={{ overflowY: 'scroll' }}>
+        <Box sx={{ overflowY: 'scroll', alignSelf: 'center' }}>
           <PostUserCard />
         </Box>
         <Navbar />
